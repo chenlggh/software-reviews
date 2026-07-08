@@ -1,0 +1,46 @@
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>{{ site.Title }}</h4>
+        <p>{{ site.Params.description }}</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          {{- range site.Menus.main }}
+            <li><a href="{{ .URL | relURL }}">{{ .Name }}</a></li>
+          {{- end }}
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Software Types</h4>
+        <ul>
+          {{- with site.Taxonomies.software_types.ByCount }}
+            {{- range first 8 . }}
+              <li><a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a></li>
+            {{- end }}
+          {{- end }}
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Affiliate Disclosure</h4>
+        <p>
+          {{ site.Params.legal.affiliateDisclaimer | default "We may earn commissions from purchases made through links on our site." }}
+        </p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>&copy; {{ now.Year }} {{ site.Title }}. All rights reserved.</span>
+      <nav class="footer-nav">
+        <a href="{{ "privacy" | relURL }}">Privacy</a>
+        <a href="{{ "terms" | relURL }}">Terms</a>
+        <a href="{{ "sitemap.xml" | relURL }}">Sitemap</a>
+      </nav>
+    </div>
+  </div>
+</footer>

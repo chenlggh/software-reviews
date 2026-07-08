@@ -1,0 +1,16 @@
+{{- /* Related Posts */ -}}
+{{- $related := site.RegularPages.Related . | first site.Params.appearance.relatedPostsLimit }}
+{{- with $related }}
+  <div class="related-posts">
+    <h3>Related Articles</h3>
+    <div class="related-grid">
+      {{- range . }}
+        <article class="related-card">
+          <h4><a href="{{ .RelPermalink }}">{{ .Title }}</a></h4>
+          <p>{{ .Description | plainify | truncate 100 }}</p>
+          <small>{{ .PublishDate.Format "Jan 2, 2006" }}</small>
+        </article>
+      {{- end }}
+    </div>
+  </div>
+{{- end }}

@@ -1,0 +1,63 @@
+{{ define "main" }}
+<div class="list-page">
+  <header class="list-header">
+    {{- partial "breadcrumb.html" . }}
+    <h1 class="list-title">{{ .Title }}</h1>
+    {{- with .Description }}
+      <p class="list-description">{{ . | markdownify }}</p>
+    {{- end }}
+  </header>
+
+  
+  {{ partial "ad-display.html" (dict "slot" "LIST_TOP") }}
+
+  <div class="list-content">
+    {{- if .Content }}
+      <div class="list-body">
+        {{ .Content }}
+      </div>
+    {{- end }}
+
+    <div class="posts-grid">
+      {{- $pages := .Pages }}
+      {{- if .IsHome }}{{ $pages = site.RegularPages }}{{ end }}
+      {{- range $pages }}
+        <article class="post-card">
+          <h2 class="post-card-title">
+            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+          </h2>
+
+          {{- with .Params.quick_summary }}
+            <p class="post-card-summary">{{ . | plainify | truncate 160 }}</p>
+          {{- else }}
+            <p class="post-card-summary">{{ .Description | default .Summary | plainify | truncate 160 }}</p>
+          {{- end }}
+
+          <div class="post-card-meta">
+            <span>{{ .PublishDate.Format "Jan 2, 2006" }}</span>
+            {{- with .Params.rating }}
+              <span class="rating">{{ . }}/5</span>
+            {{- end }}
+          </div>
+        </article>
+      {{- end }}
+    </div>
+
+    
+    {{- if gt .Paginator.TotalPages 1 }}
+      <nav class="pagination">
+        {{- if .Paginator.HasPrev }}
+          <a href="{{ .Paginator.Prev.URL }}" class="page-prev">← Previous</a>
+        {{- end }}
+        <span class="page-info">Page {{ .Paginator.PageNumber }} of {{ .Paginator.TotalPages }}</span>
+        {{- if .Paginator.HasNext }}
+          <a href="{{ .Paginator.Next.URL }}" class="page-next">Next →</a>
+        {{- end }}
+      </nav>
+    {{- end }}
+  </div>
+
+  
+  {{ partial "ad-display.html" (dict "slot" "LIST_BOTTOM") }}
+</div>
+{{ end }}

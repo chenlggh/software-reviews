@@ -1,0 +1,27 @@
+{{- /* Comparison table shortcode */ -}}
+{{- $headers := .Get "headers" | default "Software,Price,Rating,Best For" -}}
+{{- $data := .Get "data" | default "" -}}
+{{- $headArr := split $headers "," -}}
+
+<table class="comparison-table">
+  <thead>
+    <tr>
+      <th>Rank</th>
+      {{- range $headArr }}
+        <th>{{ . }}</th>
+      {{- end }}
+    </tr>
+  </thead>
+  <tbody>
+    {{- $rows := split $data ";" -}}
+    {{- range $idx, $row := $rows -}}
+      {{- $cols := split $row "," -}}
+      <tr>
+        <td>{{ add $idx 1 }}</td>
+        {{- range $cols }}
+          <td>{{ . }}</td>
+        {{- end }}
+      </tr>
+    {{- end }}
+  </tbody>
+</table>

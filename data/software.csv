@@ -1,0 +1,31 @@
+software_type,software_type_label,industry,industry_label,software_names,default_price,default_rating,default_trial
+crm,CRM Software,real-estate,Real Estate,HubSpot;Salesforce;Pipedrive;FreshBooks;Monday.com,45,4.4,14 days
+crm,CRM Software,freelancers,Freelancers,HubSpot;Pipedrive;FreshBooks;Trello;Notion,14.90,4.2,14 days
+crm,CRM Software,small-business,Small Business,HubSpot;Salesforce;Monday.com;Pipedrive;Mailchimp,25,4.3,30 days
+crm,CRM Software,startups,Startups,HubSpot;Pipedrive;Notion;Trello;Mailchimp,14.90,4.2,14 days
+crm,CRM Software,enterprise,Enterprise,Salesforce;HubSpot;Monday.com;Asana;QuickBooks,25,4.3,30 days
+crm,CRM Software,nonprofits,Nonprofits,HubSpot;Mailchimp;Notion;Trello;Monday.com,10.99,4.4,14 days
+crm,CRM Software,ecommerce,E-commerce,HubSpot;Salesforce;Mailchimp;QuickBooks;Monday.com,25,4.3,30 days
+crm,CRM Software,healthcare,Healthcare,Salesforce;HubSpot;Asana;Monday.com;Pipedrive,25,4.3,30 days
+crm,CRM Software,education,Education,Notion;Trello;Asana;HubSpot;Monday.com,10.99,4.4,14 days
+crm,CRM Software,construction,Construction,Monday.com;Asana;Trello;HubSpot;Pipedrive,8,4.4,14 days
+project-management,Project Management,real-estate,Real Estate,Asana;Monday.com;Trello;Notion;HubSpot,10.99,4.5,30 days
+project-management,Project Management,freelancers,Freelancers,Trello;Notion;Asana;Monday.com;Pipedrive,5,4.1,N/A
+project-management,Project Management,small-business,Small Business,Asana;Monday.com;Trello;Notion;HubSpot,10.99,4.5,30 days
+project-management,Project Management,startups,Startups,Notion;Trello;Asana;Monday.com;Pipedrive,5,4.5,N/A
+project-management,Project Management,enterprise,Enterprise,Asana;Monday.com;Salesforce;HubSpot;QuickBooks,10.99,4.5,30 days
+project-management,Project Management,construction,Construction,Monday.com;Asana;Trello;Notion;HubSpot,8,4.4,14 days
+project-management,Project Management,healthcare,Healthcare,Asana;Monday.com;HubSpot;Notion;Trello,10.99,4.5,30 days
+project-management,Project Management,education,Education,Notion;Trello;Asana;Monday.com;HubSpot,5,4.5,N/A
+project-management,Project Management,nonprofits,Nonprofits,Asana;Trello;Notion;Monday.com;HubSpot,10.99,4.5,30 days
+project-management,Project Management,ecommerce,E-commerce,Monday.com;Asana;Notion;HubSpot;Trello,8,4.4,14 days
+invoicing,Invoicing Software,freelancers,Freelancers,FreshBooks;QuickBooks;HubSpot;Mailchimp;Pipedrive,17,4.3,30 days
+invoicing,Invoicing Software,small-business,Small Business,QuickBooks;FreshBooks;HubSpot;Mailchimp;Monday.com,17,4.0,30 days
+invoicing,Invoicing Software,startups,Startups,FreshBooks;QuickBooks;HubSpot;Mailchimp;Notion,17,4.3,30 days
+invoicing,Invoicing Software,real-estate,Real Estate,QuickBooks;FreshBooks;HubSpot;Pipedrive;Monday.com,17,4.0,30 days
+invoicing,Invoicing Software,ecommerce,E-commerce,QuickBooks;FreshBooks;HubSpot;Mailchimp;Monday.com,30,4.0,30 days
+email-marketing,Email Marketing,small-business,Small Business,Mailchimp;HubSpot;Salesforce;Notion;Monday.com,13,4.2,N/A
+email-marketing,Email Marketing,freelancers,Freelancers,Mailchimp;HubSpot;FreshBooks;Trello;Notion,13,4.2,N/A
+email-marketing,Email Marketing,ecommerce,E-commerce,Mailchimp;HubSpot;Salesforce;Monday.com;QuickBooks,13,4.2,N/A
+email-marketing,Email Marketing,startups,Startups,Mailchimp;HubSpot;Notion;Trello;Pipedrive,13,4.2,N/A
+email-marketing,Email Marketing,education,Education,Mailchimp;HubSpot;Notion;Trello;Asana,13,4.2,N/A

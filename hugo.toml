@@ -1,0 +1,55 @@
+baseURL = "https://luoyuncn.com"
+title = "LuoYun Insights — Data-Driven Software Reviews"
+theme = "PaperMod"
+defaultContentLanguage = "en"
+enableRobotsTXT = true
+pagination.pagerSize = 20
+buildFuture = true
+
+# Output formats for search index
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+# Clean URLs
+permalinks.posts = "/:slug/"
+
+# Taxonomies
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+  software_type = "software_types"
+  industry = "industries"
+
+# Markdown config
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 3
+
+# Sitemap
+[sitemap]
+  changefreq = "weekly"
+  filename = "sitemap.xml"
+  priority = 0.8
+
+# Minify
+[minify]
+  disableXML = false
+  minifyOutput = true
+
+# Appearance
+[params]
+  [params.appearance]
+    showRelatedPosts = true
+    relatedPostsLimit = 6
+
+# Privacy
+[privacy]
+  [privacy.googleAnalytics]
+    disable = false
+    respectDoNotTrack = true
+  [privacy.youtube]
+    privacyEnhanced = true

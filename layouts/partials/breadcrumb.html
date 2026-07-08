@@ -1,0 +1,34 @@
+{{- /* BreadcrumbList JSON-LD (invisible, for SEO) */ -}}
+{{- if not .IsHome -}}
+
+  {{- $cleanTitle := .Title | replaceRE "[-_]" " " | title -}}
+  {{- $breadcrumbs := slice (dict "@type" "ListItem" "position" 1 "name" "Home" "item" site.BaseURL) -}}
+  {{- $position := 2 -}}
+
+  {{- if eq .Kind "taxonomy" -}}
+    {{- $label := .Data.Plural | replaceRE "[-_]" " " | title -}}
+    {{- $breadcrumbs = $breadcrumbs | append (dict "@type" "ListItem" "position" $position "name" $label "item" .Permalink) -}}
+  {{- else if eq .Kind "term" -}}
+    {{- $sectionName := .Data.Plural | replaceRE "[-_]" " " | title -}}
+    {{- $sectionURL := printf "/%s/" .Data.Plural | relURL -}}
+    {{- $breadcrumbs = $breadcrumbs | append (dict "@type" "ListItem" "position" $position "name" $sectionName "item" $sectionURL) -}}
+    {{- $position = add $position 1 -}}
+    {{- $breadcrumbs = $breadcrumbs | append (dict "@type" "ListItem" "position" $position "name" $cleanTitle "item" .Permalink) -}}
+  {{- else if and .CurrentSection (ne .CurrentSection .) -}}
+    {{- $name := .CurrentSection.Title -}}
+    {{- if eq (lower $name) "posts" }}{{ $name = "Reviews" }}{{ end -}}
+    {{- $breadcrumbs = $breadcrumbs | append (dict "@type" "ListItem" "position" $position "name" $name "item" .CurrentSection.Permalink) -}}
+    {{- $position = add $position 1 -}}
+    {{- $breadcrumbs = $breadcrumbs | append (dict "@type" "ListItem" "position" $position "name" .Title "item" .Permalink) -}}
+  {{- else -}}
+    {{- $breadcrumbs = $breadcrumbs | append (dict "@type" "ListItem" "position" $position "name" $cleanTitle "item" .Permalink) -}}
+  {{- end -}}
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": {{ $breadcrumbs | jsonify }}
+  }
+  </script>
+{{- end -}}

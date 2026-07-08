@@ -1,0 +1,61 @@
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+
+{{- $title := .Title }}
+{{- $description := .Description | default .Summary | default site.Params.description }}
+{{- $keywords := .Keywords | default "" }}
+{{- with .Params.tags }}{{ $keywords = delimit . ", " }}{{ end }}
+{{- if not $keywords }}{{ $keywords = site.Params.keywords }}{{ end }}
+
+<title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ $title }} | {{ site.Title }}{{ end }}</title>
+<meta name="description" content="{{ $description }}" />
+<meta name="keywords" content="{{ $keywords }}" />
+
+<!-- Canonical URL -->
+<link rel="canonical" href="{{ .Permalink }}" />
+
+<!-- RSS -->
+{{- with .OutputFormats.Get "rss" -}}
+  {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink site.Title | safeHTML }}
+{{- end }}
+
+<!-- Open Graph -->
+{{ template "_internal/opengraph.html" . }}
+
+<!-- Twitter Cards -->
+{{ template "_internal/twitter_cards.html" . }}
+
+<!-- Schema.org JSON-LD -->
+{{- partial "jsonld.html" . }}
+
+<!-- Breadcrumb JSON-LD -->
+{{- partial "breadcrumb.html" . }}
+
+<!-- Favicon -->
+<link rel="icon" href="{{ "favicon.ico" | relURL }}" />
+<link rel="apple-touch-icon" href="{{ "apple-touch-icon.png" | relURL }}" />
+
+<!-- Web Fonts: Instrument Sans (display) + Geist (body/data) -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Instrument+Sans:wght@500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+<!-- Styles -->
+{{- $style := resources.Get "css/main.css" | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}" />
+
+<!-- Theme Color for browser chrome -->
+<meta name="theme-color" content="#1e293b" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#0b1120" media="(prefers-color-scheme: dark)" />
+<meta name="msapplication-TileColor" content="#1e293b" />
+
+<!-- Fake analytics placeholder - replace with real GA4 -->
+{{- if eq site.Params.env "production" }}
+  {{- with site.Config.Services.GoogleAnalytics.ID }}
+    {{ template "_internal/google_analytics.html" $ }}
+  {{- end }}
+{{- end }}
+
+<!-- Page-specific schema -->
+{{- block "head-schema" . }}{{ end }}

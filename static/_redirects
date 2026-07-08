@@ -1,0 +1,9 @@
+# Cloudflare Pages _redirects
+# Redirect old URLs (example)
+# /old-path /new-path 301
+
+# Redirects based on common misspellings
+# /software-types/crm-software /software-types/crm 301
+
+# Redirect trailing slash removal (if needed)
+# /about/ /about 200

@@ -1,0 +1,284 @@
+# Software Database
+# Used by Hugo templates and Python generation script
+
+categories:
+  - id: crm
+    name: CRM Software
+    description: Customer relationship management tools for sales and marketing teams.
+
+  - id: project-management
+    name: Project Management
+    description: Tools for planning, tracking, and managing projects and tasks.
+
+  - id: invoicing
+    name: Invoicing Software
+    description: Billing and invoicing tools for freelancers and small businesses.
+
+  - id: email-marketing
+    name: Email Marketing
+    description: Email campaign and newsletter management platforms.
+
+  - id: accounting
+    name: Accounting Software
+    description: Bookkeeping and financial management tools.
+
+industries:
+  - id: real-estate
+    name: Real Estate
+  - id: freelancers
+    name: Freelancers
+  - id: small-business
+    name: Small Business
+  - id: enterprise
+    name: Enterprise
+  - id: nonprofits
+    name: Nonprofits
+  - id: construction
+    name: Construction
+  - id: healthcare
+    name: Healthcare
+  - id: ecommerce
+    name: E-commerce
+  - id: education
+    name: Education
+  - id: startups
+    name: Startups
+
+software:
+  - name: HubSpot
+    category: crm
+    price: "$45/mo"
+    free_trial: "14 days"
+    free_plan: true
+    rating: 4.4
+    g2_rating: 4.3
+    core_strength: "All-in-one CRM with marketing and sales hub"
+    best_for: "Small to mid-size businesses"
+    pros:
+      - "Comprehensive free tier"
+      - "Excellent integration ecosystem"
+      - "User-friendly interface"
+    cons:
+      - "Can get expensive with add-ons"
+      - "Limited customization on lower tiers"
+    features:
+      - "Contact management"
+      - "Deal tracking"
+      - "Email marketing"
+      - "Live chat"
+      - "Analytics dashboard"
+    affiliate_url: "https://hubspot.com/"
+
+  - name: Salesforce
+    category: crm
+    price: "$25/mo"
+    free_trial: "30 days"
+    free_plan: false
+    rating: 4.3
+    g2_rating: 4.2
+    core_strength: "Enterprise-grade customization and scalability"
+    best_for: "Large enterprises and sales teams"
+    pros:
+      - "Highly customizable"
+      - "Powerful automation"
+      - "Extensive app marketplace"
+    cons:
+      - "Steep learning curve"
+      - "Expensive at scale"
+    features:
+      - "Lead management"
+      - "Opportunity tracking"
+      - "AI-powered insights"
+      - "Workflow automation"
+      - "Custom dashboards"
+    affiliate_url: "https://salesforce.com/"
+
+  - name: Pipedrive
+    category: crm
+    price: "$14.90/mo"
+    free_trial: "14 days"
+    free_plan: false
+    rating: 4.2
+    g2_rating: 4.2
+    core_strength: "Visual pipeline management"
+    best_for: "Sales-focused teams"
+    pros:
+      - "Intuitive pipeline view"
+      - "Easy to set up"
+      - "Great mobile app"
+    cons:
+      - "Limited marketing features"
+      - "Basic reporting"
+    features:
+      - "Deal management"
+      - "Activity reminders"
+      - "Email tracking"
+      - "Custom pipelines"
+    affiliate_url: "https://pipedrive.com/"
+
+  - name: Asana
+    category: project-management
+    price: "$10.99/mo"
+    free_trial: "30 days"
+    free_plan: true
+    rating: 4.5
+    g2_rating: 4.3
+    core_strength: "Visual project tracking with multiple views"
+    best_for: "Cross-functional teams"
+    pros:
+      - "Multiple project views (list, board, timeline, calendar)"
+      - "Strong automation rules"
+      - "Great collaboration tools"
+    cons:
+      - "Can feel complex for simple projects"
+      - "Limited offline access"
+    features:
+      - "Task management"
+      - "Project timelines"
+      - "Workflow automation"
+      - "Portfolio management"
+      - "Goals tracking"
+    affiliate_url: "https://asana.com/"
+
+  - name: Monday.com
+    category: project-management
+    price: "$8/mo"
+    free_trial: "14 days"
+    free_plan: true
+    rating: 4.4
+    g2_rating: 4.3
+    core_strength: "Flexible visual work OS"
+    best_for: "Teams of all sizes"
+    pros:
+      - "Highly visual interface"
+      - "Customizable boards"
+      - "Good integrations"
+    cons:
+      - "Can get expensive per user"
+      - "Some advanced features require higher tier"
+    features:
+      - "Board and timeline views"
+      - "Time tracking"
+      - "File sharing"
+      - "Automation recipes"
+      - "Dashboard reports"
+    affiliate_url: "https://monday.com/"
+
+  - name: Trello
+    category: project-management
+    price: "$5/mo"
+    free_trial: null
+    free_plan: true
+    rating: 4.1
+    g2_rating: 4.1
+    core_strength: "Simple Kanban boards"
+    best_for: "Small teams and personal projects"
+    pros:
+      - "Dead simple to use"
+      - "Generous free plan"
+      - "Excellent power-ups"
+    cons:
+      - "Limited for complex projects"
+      - "No native timeline view on free plan"
+    features:
+      - "Kanban boards"
+      - "Checklists"
+      - "Due dates"
+      - "Butler automation"
+    affiliate_url: "https://trello.com/"
+
+  - name: FreshBooks
+    category: invoicing
+    price: "$17/mo"
+    free_trial: "30 days"
+    free_plan: false
+    rating: 4.3
+    g2_rating: 4.2
+    core_strength: "User-friendly invoicing for freelancers"
+    best_for: "Freelancers and service businesses"
+    pros:
+      - "Beautiful invoices"
+      - "Easy expense tracking"
+      - "Good time tracking"
+    cons:
+      - "Limited accounting features"
+      - "Fewer users on basic plan"
+    features:
+      - "Invoice creation"
+      - "Expense tracking"
+      - "Time tracking"
+      - "Payment processing"
+      - "Financial reports"
+    affiliate_url: "https://freshbooks.com/"
+
+  - name: Mailchimp
+    category: email-marketing
+    price: "$13/mo"
+    free_trial: null
+    free_plan: true
+    rating: 4.2
+    g2_rating: 4.1
+    core_strength: "All-in-one marketing platform"
+    best_for: "Small business marketing"
+    pros:
+      - "Generous free plan (500 contacts)"
+      - "Beautiful email templates"
+      - "Built-in CRM"
+    cons:
+      - "Can be expensive as list grows"
+      - "Automation limited on lower tiers"
+    features:
+      - "Email campaigns"
+      - "Audience management"
+      - "Customer journey builder"
+      - "A/B testing"
+      - "Analytics"
+    affiliate_url: "https://mailchimp.com/"
+
+  - name: QuickBooks
+    category: accounting
+    price: "$30/mo"
+    free_trial: "30 days"
+    free_plan: false
+    rating: 4.0
+    g2_rating: 3.9
+    core_strength: "Industry-standard accounting software"
+    best_for: "Small to medium businesses"
+    pros:
+      - "Comprehensive accounting features"
+      - "Good tax preparation tools"
+      - "Large accountant network"
+    cons:
+      - "Can be complex for non-accountants"
+      - "Customer support could be better"
+    features:
+      - "Income & expense tracking"
+      - "Invoicing"
+      - "Payroll"
+      - "Tax preparation"
+      - "Bank reconciliation"
+    affiliate_url: "https://quickbooks.intuit.com/"
+
+  - name: Notion
+    category: project-management
+    price: "$10/mo"
+    free_trial: null
+    free_plan: true
+    rating: 4.5
+    g2_rating: 4.4
+    core_strength: "All-in-one workspace with docs, wikis, and projects"
+    best_for: "Knowledge-driven teams"
+    pros:
+      - "Extremely flexible"
+      - "Great for documentation"
+      - "Generous free plan"
+    cons:
+      - "No offline mode on web"
+      - "Database queries can be slow at scale"
+    features:
+      - "Docs & wikis"
+      - "Database/spreadsheet"
+      - "Kanban boards"
+      - "Calendar view"
+      - "Templates & sharing"
+    affiliate_url: "https://notion.so/"

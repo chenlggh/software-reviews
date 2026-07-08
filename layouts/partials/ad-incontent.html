@@ -1,0 +1,18 @@
+{{- /* In-content ad (300x250) */ -}}
+{{- if and site.Params.adsense.enabled site.Params.adsense.publisher_id (eq site.Params.env "production") -}}
+  <div class="ad-unit ad-rectangle">
+    <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="{{ site.Params.adsense.publisher_id }}"
+      data-ad-slot="{{ .slot | default "XXXXXXXXX" }}"
+      data-ad-format="rectangle"
+      data-full-width-responsive="true">
+    </ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+{{- else if ne site.Params.env "production" -}}
+  <div class="ad-placeholder ad-rectangle">
+    <span>Advertisement</span>
+    <small>300×250</small>
+  </div>
+{{- end }}

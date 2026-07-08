@@ -1,0 +1,71 @@
+{{ define "main" }}
+<div class="list-page">
+  <header class="list-header">
+    {{- partial "breadcrumb.html" . }}
+    <h1 class="list-title">{{ .Title }}</h1>
+    {{- with .Description }}
+      <p class="list-description">{{ . | markdownify }}</p>
+    {{- else }}
+      <p class="list-description">Browse all {{ .Title | lower }} categories to find the right software for your needs.</p>
+    {{- end }}
+    <div class="list-search">
+      <input type="text" class="list-search-input" placeholder="Search within {{ .Title | lower }}..." aria-label="Search within this category" />
+    </div>
+  </header>
+
+  {{ partial "ad-display.html" (dict "slot" "LIST_TOP") }}
+
+  <div class="list-content">
+    {{- if .Content }}
+      <div class="list-body">
+        {{ .Content }}
+      </div>
+    {{- end }}
+
+    {{- /* Taxonomy terms listing */}}
+    {{- $taxonomy := .Data.Plural }}
+    {{- $termPages := .Pages }}
+    {{- if $termPages }}
+      <div class="taxonomy-grid">
+        {{- range $termPages.ByTitle }}
+          {{- $count := len .Pages }}
+          <a href="{{ .RelPermalink }}" class="taxonomy-term-card">
+            <h3>{{ .Title }}</h3>
+            <span class="count">{{ $count }} {{ if eq $count 1 }}review{{ else }}reviews{{ end }}</span>
+          </a>
+        {{- end }}
+      </div>
+    {{- else }}
+      <p class="text-muted" style="padding: 2rem 0; color: var(--color-text-muted);">
+        No entries found in this category yet.
+      </p>
+    {{- end }}
+
+    {{- /* Also show recent posts tagged under this taxonomy */}}
+    {{- $recent := where site.RegularPages (printf ".Params.%s" $taxonomy) "!=" nil }}
+    {{- if $recent }}
+      <h2 style="font-family: var(--font-display); font-size: 1.1rem; font-weight: 600; margin-top: var(--space-2xl);">Recent Reviews</h2>
+      <div class="posts-grid">
+        {{- range first 12 $recent }}
+          <article class="post-card">
+            <h3 class="post-card-title">
+              <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+            </h3>
+            <p class="post-card-summary">
+              {{ .Description | default .Summary | plainify | truncate 140 }}
+            </p>
+            <div class="post-card-meta">
+              <span>{{ .PublishDate.Format "Jan 2, 2006" }}</span>
+              {{- with .Params.rating }}
+                <span class="rating">{{ . }}/5</span>
+              {{- end }}
+            </div>
+          </article>
+        {{- end }}
+      </div>
+    {{- end }}
+  </div>
+
+  {{ partial "ad-display.html" (dict "slot" "LIST_BOTTOM") }}
+</div>
+{{ end }}

@@ -1,0 +1,57 @@
+# Theme: PaperMod parameters
+env = "production"
+title = "Software Reviews & Comparisons"
+description = "Expert software comparisons, reviews, and buying guides for businesses"
+keywords = ["software reviews", "software comparison", "SaaS", "business tools"]
+author = "Software Review Team"
+
+# Date format
+DateFormat = "January 2, 2006"
+
+# Google AdSense
+[adsense]
+  enabled = false  # Set to true when AdSense is approved
+  publisher_id = "ca-pub-XXXXXXXXXXXXXXXX"  # Your AdSense publisher ID
+  auto_ads = true  # Enable Auto Ads
+
+# Home page
+[home]
+  profileMode = false
+
+# Social & SEO
+[social]
+  showShareButtons = true
+  shareOnLinkedIn = true
+  shareOnTwitter = true
+  shareOnFacebook = true
+  shareOnReddit = true
+
+# SEO
+[seo]
+  enableJSONLD = true
+  enableOpenGraph = true
+  enableTwitterCards = true
+
+# Appearance
+[appearance]
+  showReadingTime = true
+  showWordCount = false
+  showTableOfContents = true
+  showBreadcrumbs = true
+  showRelatedPosts = true
+  relatedPostsLimit = 6
+  showCodeCopyButtons = true
+  showFullTextInRSS = false
+
+# Search
+[search]
+  enable = true
+  type = "fuse"  # or "algolia"
+
+# Comments (placeholder for future)
+[comments]
+  enable = false
+
+# Affiliate disclosure
+[legal]
+  affiliateDisclaimer = "When you purchase through links on our site, we may earn an affiliate commission."

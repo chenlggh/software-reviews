@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Design Preview — Software Reviews & Comparisons</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Instrument+Sans:wght@500;600;700&display=swap" rel="stylesheet" />
+<style>
+/* ============================================
+   Design System Preview
+   "评测不带货，数据说话"
+   ============================================ */
+
+/* --- Design Tokens (Light) --- */
+:root {
+  --color-bg: #ffffff;
+  --color-surface: #f8fafc;
+  --color-surface-raised: #ffffff;
+  --color-border: #e2e8f0;
+  --color-border-light: #f1f5f9;
+
+  --color-text: #0f172a;
+  --color-text-secondary: #475569;
+  --color-text-muted: #94a3b8;
+
+  --color-primary: #1e293b;
+  --color-primary-hover: #0f172a;
+  --color-accent: #0ea5e9;
+  --color-accent-hover: #0284c7;
+  --color-accent-subtle: rgba(14, 165, 233, 0.08);
+
+  --color-success: #22c55e;
+  --color-success-bg: #f0fdf4;
+  --color-warning: #d97706;
+  --color-warning-bg: #fffbeb;
+  --color-error: #dc2626;
+  --color-error-bg: #fef2f2;
+  --color-info: #0ea5e9;
+  --color-info-bg: #f0f9ff;
+
+  --color-star: #f59e0b;
+  --color-cta: #0ea5e9;
+
+  --font-display: 'Instrument Sans', system-ui, sans-serif;
+  --font-body: 'Geist', system-ui, sans-serif;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+
+  --shadow-none: none;
+  --shadow-sm: none;
+  --shadow-md: none;
+
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+
+  --max-width: 1100px;
+  --header-h: 60px;
+}
+
+/* --- Dark Mode --- */
+[data-theme="dark"] {
+  --color-bg: #0b1120;
+  --color-surface: #131c31;
+  --color-surface-raised: #1a2744;
+  --color-border: #1e293b;
+  --color-border-light: #1a2744;
+
+  --color-text: #e2e8f0;
+  --color-text-secondary: #94a3b8;
+  --color-text-muted: #64748b;
+
+  --color-primary: #e2e8f0;
+  --color-primary-hover: #f8fafc;
+  --color-accent: #38bdf8;
+  --color-accent-hover: #7dd3fc;
+  --color-accent-subtle: rgba(56, 189, 248, 0.1);
+
+  --color-success-bg: rgba(34, 197, 94, 0.12);
+  --color-warning-bg: rgba(217, 119, 6, 0.12);
+  --color-error-bg: rgba(220, 38, 38, 0.12);
+  --color-info-bg: rgba(14, 165, 233, 0.12);
+}
+
+/* --- Base --- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background: var(--color-bg);
+  line-height: 1.6;
+  transition: background .2s, color .2s;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- Preview chrome (header, nav, etc.) --- */
+.preview-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+  height: var(--header-h);
+}
+.preview-header-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.preview-logo {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--color-text);
+  letter-spacing: -0.01em;
+}
+.preview-nav {
+  display: flex;
+  gap: var(--space-lg);
+}
+.preview-nav a {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  padding: 0.25rem 0;
+  border-bottom: 1.5px solid transparent;
+  transition: color .15s, border-color .15s;
+}
+.preview-nav a:hover { color: var(--color-accent); }
+.theme-toggle {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 0.35rem 0.75rem;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  transition: all .15s;
+}
+.theme-toggle:hover { border-color: var(--color-accent); color: var(--color-accent); }
+
+/* --- Sections --- */
+.preview-section {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--space-3xl) var(--space-md);
+}
+.preview-section + .preview-section { border-top: 1px solid var(--color-border-light); }
+
+.preview-h2 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-bottom: var(--space-lg);
+  color: var(--color-text);
+}
+
+/* --- Hero / Intro --- */
+.hero-preview {
+  text-align: center;
+  padding: var(--space-3xl) var(--space-md) var(--space-2xl);
+  max-width: 720px;
+  margin: 0 auto;
+}
+.hero-preview h1 {
+  font-family: var(--font-display);
+  font-size: 2.25rem;
+  font-weight: 650;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  margin-bottom: var(--space-md);
+}
+.hero-preview .tagline {
+  font-size: 1.05rem;
+  color: var(--color-text-secondary);
+  max-width: 540px;
+  margin: 0 auto var(--space-lg);
+  line-height: 1.7;
+}
+.hero-preview .badge {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  border: 1px solid var(--color-accent);
+  border-radius: 999px;
+  padding: 0.25rem 0.75rem;
+  margin-bottom: var(--space-lg);
+}
+
+/* --- Color Swatches --- */
+.color-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--space-md);
+}
+.color-card {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+.color-swatch {
+  height: 80px;
+  display: flex;
+  align-items: flex-end;
+  padding: var(--space-sm);
+}
+.color-swatch span {
+  font-size: 0.7rem;
+  font-weight: 500;
+  font-family: var(--font-body);
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  padding: 1px 6px;
+  border-radius: 3px;
+  backdrop-filter: blur(4px);
+}
+.color-info {
+  padding: var(--space-sm) var(--space-sm);
+  font-size: 0.75rem;
+  line-height: 1.5;
+}
+.color-name { font-weight: 600; color: var(--color-text); }
+.color-hex { color: var(--color-text-muted); font-family: var(--font-body); }
+
+/* --- UI Component Gallery --- */
+.component-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  align-items: center;
+  margin-bottom: var(--space-lg);
+}
+.component-row-label {
+  width: 120px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  flex-shrink: 0;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: default;
+  transition: all .15s;
+  border: 1px solid transparent;
+  text-decoration: none;
+}
+.btn-primary {
+  background: var(--color-accent);
+  color: #fff;
+}
+.btn-secondary {
+  background: transparent;
+  border-color: var(--color-border);
+  color: var(--color-text-secondary);
+}
+.btn-ghost {
+  background: transparent;
+  border-color: transparent;
+  color: var(--color-text-secondary);
+}
+.btn-danger {
+  background: var(--color-error);
+  color: #fff;
+}
+.card-sample {
+  background: var(--color-surface-raised);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  max-width: 260px;
+}
+.card-sample h4 {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: var(--space-xs);
+}
+.card-sample p {
+  font-size: 0.82rem;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+  margin-bottom: var(--space-sm);
+}
+.card-sample .meta {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+.input-sample {
+  padding: 0.55rem 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  background: var(--color-surface-raised);
+  color: var(--color-text);
+  width: 220px;
+  transition: border-color .15s;
+}
+.input-sample:focus { outline: none; border-color: var(--color-accent); }
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  font-family: var(--font-body);
+}
+.tag-accent { background: var(--color-accent-subtle); color: var(--color-accent); }
+.tag-surface { background: var(--color-surface); border: 1px solid var(--color-border); color: var(--color-text-secondary); }
+
+.alert {
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-sm);
+  font-size: 0.82rem;
+  font-weight: 500;
+  max-width: 400px;
+}
+.alert-success { background: var(--color-success-bg); color: var(--color-success); }
+.alert-warning { background: var(--color-warning-bg); color: var(--color-warning); }
+.alert-error { background: var(--color-error-bg); color: var(--color-error); }
+.alert-info { background: var(--color-info-bg); color: var(--color-info); }
+
+/* --- Typography Specimen --- */
+.type-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xl);
+}
+@media (max-width: 640px) { .type-grid { grid-template-columns: 1fr; } }
+
+.type-card {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+}
+.type-card h3 {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-md);
+}
+.type-display {
+  font-family: var(--font-display);
+  font-weight: 650;
+  font-size: 1.75rem;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-sm);
+}
+.type-body {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+}
+.type-data {
+  font-family: var(--font-body);
+  font-variant-numeric: tabular-nums;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--color-text);
+}
+.type-label {
+  font-size: 0.65rem;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-xs);
+  font-family: var(--font-body);
+}
+
+/* --- Page Mockups --- */
+.mockup {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-bottom: var(--space-xl);
+}
+.mockup-header {
+  border-bottom: 1px solid var(--color-border);
+  padding: var(--space-md);
+  background: var(--color-surface);
+}
+.mockup-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.mockup-breadcrumb {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  font-family: var(--font-body);
+}
+.mockup-body { padding: var(--space-lg); }
+
+/* Category grid mockup */
+.cat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
+}
+.cat-item {
+  display: block;
+  padding: var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: border-color .15s;
+}
+.cat-item:hover { border-color: var(--color-accent); }
+.cat-item h4 {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 0.15rem;
+}
+.cat-item .count {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+}
+
+/* Review card */
+.review-card {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--space-md);
+  padding: var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--space-sm);
+  align-items: start;
+}
+.review-card h3 {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: var(--space-xs);
+}
+.review-card p {
+  font-size: 0.82rem;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+.review-meta {
+  display: flex;
+  gap: var(--space-md);
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  margin-top: var(--space-sm);
+}
+.review-meta span { display: inline-flex; align-items: center; gap: 0.2rem; }
+.rating-stars { color: var(--color-star); }
+.rating-num { font-weight: 600; font-variant-numeric: tabular-nums; }
+
+/* Data panel */
+.data-panel {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--color-border);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  margin-bottom: var(--space-lg);
+}
+.data-cell {
+  background: var(--color-surface);
+  padding: var(--space-md);
+  text-align: center;
+}
+.data-cell .label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-xs);
+}
+.data-cell .value {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--color-text);
+}
+.data-cell .value.good { color: var(--color-success); }
+.data-cell .value.accent { color: var(--color-accent); }
+
+/* Comparison table */
+.comp-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+}
+.comp-table th, .comp-table td {
+  text-align: left;
+  padding: var(--space-sm) var(--space-md);
+  border-bottom: 1px solid var(--color-border);
+}
+.comp-table th {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+  background: var(--color-surface);
+}
+.comp-table td { color: var(--color-text); vertical-align: top; }
+.comp-table tr:last-child td { border-bottom: none; }
+.comp-table .highlight {
+  color: var(--color-accent);
+  font-weight: 500;
+}
+.comp-table .check { color: var(--color-success); }
+
+/* For details label */
+.detail-label {
+  font-size: 0.7rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-sm);
+}
+
+/* --- Spacing Scale --- */
+.spacing-scale {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  align-items: flex-end;
+}
+.spacing-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+}
+.spacing-block .bar {
+  background: var(--color-accent);
+  opacity: 0.35;
+  border-radius: 2px;
+  width: 40px;
+}
+.spacing-block .lbl {
+  font-size: 0.7rem;
+  color: var(--color-text-muted);
+  font-family: var(--font-body);
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .hero-preview h1 { font-size: 1.6rem; }
+  .data-panel { grid-template-columns: repeat(2, 1fr); }
+  .review-card { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .preview-nav { display: none; }
+  .hero-preview h1 { font-size: 1.4rem; }
+  .data-panel { grid-template-columns: 1fr 1fr; }
+}
+
+/* --- Utility --- */
+.mt-sm { margin-top: var(--space-sm); }
+.mt-md { margin-top: var(--space-md); }
+.mt-lg { margin-top: var(--space-lg); }
+.mb-sm { margin-bottom: var(--space-sm); }
+.mb-md { margin-bottom: var(--space-md); }
+.gap-row { display: flex; flex-wrap: wrap; gap: var(--space-sm); align-items: center; }
+.text-muted { color: var(--color-text-muted); }
+
+/* sample prose */
+.prose-sample {
+  max-width: 680px;
+}
+.prose-sample h2 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-bottom: var(--space-sm);
+  margin-top: var(--space-lg);
+}
+.prose-sample h3 {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: var(--space-xs);
+  margin-top: var(--space-md);
+}
+.prose-sample p {
+  font-size: 0.9rem;
+  line-height: 1.75;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-sm);
+}
+.prose-sample strong { color: var(--color-text); font-weight: 600; }
+.prose-sample a { color: var(--color-accent); text-decoration: none; }
+.prose-sample a:hover { text-decoration: underline; }
+.prose-sample ul {
+  padding-left: 1.25rem;
+  margin-bottom: var(--space-sm);
+}
+.prose-sample li {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  margin-bottom: var(--space-xs);
+}
+</style>
+</head>
+<body>
+
+<!-- ========== HEADER ========== -->
+<header class="preview-header">
+  <div class="preview-header-inner">
+    <div class="preview-logo">Software Reviews</div>
+    <nav class="preview-nav">
+      <a href="#">CRM</a>
+      <a href="#">Project Management</a>
+      <a href="#">Invoicing</a>
+      <a href="#">Email Marketing</a>
+      <a href="#">Accounting</a>
+    </nav>
+    <button class="theme-toggle" onclick="toggleTheme()">Dark / Light</button>
+  </div>
+</header>
+
+<!-- ========== HERO ========== -->
+<section class="hero-preview">
+  <div class="badge">Design System Preview</div>
+  <h1>Software Reviews &amp; Comparisons</h1>
+  <p class="tagline">
+    Expert software comparisons, reviews, and buying guides for businesses.
+    Structured data, clear scores. No fluff.
+  </p>
+</section>
+
+<!-- ========== TYPOGRAPHY ========== -->
+<section class="preview-section">
+  <h2 class="preview-h2">Typography</h2>
+  <div class="type-grid">
+
+    <div class="type-card">
+      <h3>Display / Headlines</h3>
+      <div class="type-label">Instrument Sans &middot; Weight 650 &middot; -0.02em tracking</div>
+      <div class="type-display">The Best CRM Software for Real Estate in 2026</div>
+      <div class="type-display" style="font-size:1.3rem;font-weight:600;">HubSpot vs Salesforce: Which One Fits Your Team?</div>
+      <div class="type-display" style="font-size:1.1rem;font-weight:600;">Project Management Tools Compared</div>
+    </div>
+
+    <div class="type-card">
+      <h3>Body</h3>
+      <div class="type-label">Geist &middot; Weight 400 &middot; 0.9rem &middot; Line-height 1.7</div>
+      <div class="type-body">
+        Choosing the right software for your business is a decision that affects
+        productivity, budget, and team morale. We evaluate each tool based on
+        features, pricing, user experience, and real-world performance — not
+        affiliate commissions.
+      </div>
+      <div class="type-body mt-md">
+        Our reviews are updated quarterly to reflect the latest pricing changes,
+        feature releases, and market shifts. All scores are independently verified.
+      </div>
+    </div>
+
+    <div class="type-card">
+      <h3>Data &amp; Tables</h3>
+      <div class="type-label">Geist &middot; tabular-nums enabled &middot; fixed-width digits</div>
+      <div class="type-data">
+        Starting price &nbsp; $14.90/mo &nbsp;&nbsp; $25.00/mo &nbsp;&nbsp; $45.00/mo<br />
+        G2 Rating &nbsp;&nbsp;&nbsp;&nbsp; 4.2 &nbsp; 4.3 &nbsp; 4.4<br />
+        Free trial &nbsp;&nbsp;&nbsp;&nbsp; 14 days &nbsp; 30 days &nbsp; 14 days
+      </div>
+      <div class="type-data mt-sm" style="color:var(--color-text-muted);font-size:0.78rem;">
+        Note how digits align vertically across rows — this is critical for comparison tables.
+      </div>
+    </div>
+
+    <div class="type-card">
+      <h3>UI / Labels</h3>
+      <div class="type-label">Geist &middot; Weight 500 &middot; 0.78–0.85rem</div>
+      <div class="gap-row">
+        <span class="tag tag-accent">CRM</span>
+        <span class="tag tag-surface">Free Trial</span>
+        <span class="tag tag-surface">G2 4.3</span>
+      </div>
+      <div class="gap-row mt-sm">
+        <button class="btn btn-primary">Read Review</button>
+        <button class="btn btn-secondary">Compare</button>
+        <button class="btn btn-ghost">Save</button>
+      </div>
+      <div class="gap-row mt-sm" style="font-size:0.78rem;color:var(--color-text-muted);">
+        <span>Published Jan 12, 2026</span>
+        <span>&middot;</span>
+        <span>8 min read</span>
+        <span>&middot;</span>
+        <span>Updated Mar 3</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ========== COLOR ========== -->
+<section class="preview-section">
+  <h2 class="preview-h2">Color</h2>
+  <div class="color-grid">
+    <div class="color-card">
+      <div class="color-swatch" style="background:#0f172a;"><span>Text</span></div>
+      <div class="color-info"><div class="color-name">Text (slate-900)</div><div class="color-hex">#0f172a</div></div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#1e293b;"><span>Primary</span></div>
+      <div class="color-info"><div class="color-name">Primary (slate-800)</div><div class="color-hex">#1e293b</div></div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#0ea5e9;"><span>Accent</span></div>
+      <div class="color-info"><div class="color-name">Accent (sky-500)</div><div class="color-hex">#0ea5e9</div></div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#64748b;"><span>Muted</span></div>
+      <div class="color-info"><div class="color-name">Text Muted (slate-500)</div><div class="color-hex">#64748b</div></div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#e2e8f0;"><span>Border</span></div>
+      <div class="color-info"><div class="color-name">Border (slate-200)</div><div class="color-hex">#e2e8f0</div></div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#f8fafc;"><span>Surface</span></div>
+      <div class="color-info"><div class="color-name">Surface (slate-50)</div><div class="color-hex">#f8fafc</div></div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#22c55e;"><span>Success</span></div>
+      <div class="color-info"><div class="color-name">Success</div><div class="color-hex">#22c55e</div></div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#d97706;"><span>Warning</span></div>
+      <div class="color-info"><div class="color-name">Warning</div><div class="color-hex">#d97706</div></div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#dc2626;"><span>Error</span></div>
+      <div class="color-info"><div class="color-name">Error</div><div class="color-hex">#dc2626</div></div>
+    </div>
+  </div>
+
+  <!-- UI Components with colors -->
+  <div class="mt-lg">
+    <h2 class="preview-h2">UI Components</h2>
+
+    <div class="component-row">
+      <div class="component-row-label">Alerts</div>
+      <div class="alert alert-success">Free plan available for up to 2 users</div>
+      <div class="alert alert-warning">Free trial ends in 3 days</div>
+      <div class="alert alert-error">Unable to verify data source</div>
+      <div class="alert alert-info">Updated 2 hours ago</div>
+    </div>
+
+    <div class="component-row">
+      <div class="component-row-label">Buttons</div>
+      <button class="btn btn-primary">Read Review</button>
+      <button class="btn btn-secondary">View Comparison</button>
+      <button class="btn btn-ghost">Save for Later</button>
+      <button class="btn btn-danger">Report Issue</button>
+    </div>
+
+    <div class="component-row">
+      <div class="component-row-label">Card</div>
+      <div class="card-sample">
+        <h4>HubSpot CRM</h4>
+        <p>All-in-one CRM with marketing and sales hub. Best for small to mid-size businesses.</p>
+        <div class="meta">
+          <span class="rating-stars">★★★★</span><span class="rating-num" style="color:var(--color-text);"> 4.4</span>
+          &middot; $45/mo
+        </div>
+      </div>
+    </div>
+
+    <div class="component-row">
+      <div class="component-row-label">Input</div>
+      <input class="input-sample" type="text" placeholder="Search software reviews..." />
+      <span class="tag tag-accent">14 categories</span>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SPACING SCALE ========== -->
+<section class="preview-section">
+  <h2 class="preview-h2">Spacing Scale</h2>
+  <p class="text-muted" style="font-size:0.85rem;margin-bottom:var(--space-lg);">
+    Base unit 4px. Density: comfortable. All spacing derived from this scale.
+  </p>
+  <div class="spacing-scale">
+    <div class="spacing-block"><div class="bar" style="height:2px;"></div><div class="lbl">2xs (2)</div></div>
+    <div class="spacing-block"><div class="bar" style="height:4px;"></div><div class="lbl">xs (4)</div></div>
+    <div class="spacing-block"><div class="bar" style="height:8px;"></div><div class="lbl">sm (8)</div></div>
+    <div class="spacing-block"><div class="bar" style="height:16px;"></div><div class="lbl">md (16)</div></div>
+    <div class="spacing-block"><div class="bar" style="height:24px;"></div><div class="lbl">lg (24)</div></div>
+    <div class="spacing-block"><div class="bar" style="height:32px;"></div><div class="lbl">xl (32)</div></div>
+    <div class="spacing-block"><div class="bar" style="height:48px;"></div><div class="lbl">2xl (48)</div></div>
+    <div class="spacing-block"><div class="bar" style="height:64px;"></div><div class="lbl">3xl (64)</div></div>
+  </div>
+</section>
+
+<!-- ========== PAGE MOCKUPS ========== -->
+<section class="preview-section">
+  <h2 class="preview-h2">Page Mockups</h2>
+
+  <!-- Mockup 1: Home / Category Grid -->
+  <div class="mockup">
+    <div class="mockup-header">
+      <div class="mockup-header-row">
+        <div class="mockup-breadcrumb">Home</div>
+        <div style="font-size:0.78rem;color:var(--color-text-muted);">Software Reviews</div>
+      </div>
+    </div>
+    <div class="mockup-body">
+      <h2 style="font-family:var(--font-display);font-size:1.3rem;font-weight:600;margin-bottom:var(--space-sm);">
+        Browse by Software Category
+      </h2>
+      <p style="font-size:0.85rem;color:var(--color-text-secondary);margin-bottom:var(--space-md);">
+        Compare tools across 5 categories, evaluated on features, pricing, and real user ratings.
+      </p>
+
+      <div class="cat-grid">
+        <div class="cat-item">
+          <h4>CRM Software</h4>
+          <div class="count">17 reviews</div>
+        </div>
+        <div class="cat-item">
+          <h4>Project Management</h4>
+          <div class="count">24 reviews</div>
+        </div>
+        <div class="cat-item">
+          <h4>Invoicing Software</h4>
+          <div class="count">11 reviews</div>
+        </div>
+        <div class="cat-item">
+          <h4>Email Marketing</h4>
+          <div class="count">14 reviews</div>
+        </div>
+        <div class="cat-item">
+          <h4>Accounting Software</h4>
+          <div class="count">9 reviews</div>
+        </div>
+      </div>
+
+      <h3 style="font-family:var(--font-display);font-size:1rem;font-weight:600;margin-bottom:var(--space-sm);">
+        Latest Reviews
+      </h3>
+
+      <div class="review-card">
+        <div>
+          <h3>Best CRM Software for Real Estate in 2026</h3>
+          <p>Compare the top CRM platforms built for real estate agents and brokerages. We evaluated HubSpot, Salesforce, and Pipedrive on features specific to property management.</p>
+          <div class="review-meta">
+            <span>Mar 15, 2026</span>
+            <span><span class="rating-stars">★★★★</span> 4.3</span>
+            <span>CRM</span>
+            <span>Real Estate</span>
+          </div>
+        </div>
+        <button class="btn btn-primary" style="cursor:default;">Read →</button>
+      </div>
+
+      <div class="review-card">
+        <div>
+          <h3>Asana vs Monday.com: Which Project Management Tool Wins?</h3>
+          <p>Head-to-head comparison of two leading project management platforms. We break down pricing, features, collaboration tools, and which teams each suits best.</p>
+          <div class="review-meta">
+            <span>Feb 28, 2026</span>
+            <span><span class="rating-stars">★★★★★</span> 4.5</span>
+            <span>Project Management</span>
+            <span>Comparison</span>
+          </div>
+        </div>
+        <button class="btn btn-primary" style="cursor:default;">Read →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mockup 2: Review Page with Data Panel -->
+  <div class="mockup">
+    <div class="mockup-header">
+      <div class="mockup-header-row">
+        <div class="mockup-breadcrumb">Home / CRM / HubSpot Review</div>
+        <div style="font-size:0.78rem;color:var(--color-text-muted);">Page mockup</div>
+      </div>
+    </div>
+    <div class="mockup-body">
+      <div class="detail-label">Review &middot; Updated June 2026</div>
+      <h2 style="font-family:var(--font-display);font-size:1.5rem;font-weight:650;letter-spacing:-0.02em;margin-bottom:var(--space-sm);">
+        HubSpot CRM Review
+      </h2>
+      <p style="font-size:0.88rem;color:var(--color-text-secondary);margin-bottom:var(--space-lg);">
+        An in-depth look at HubSpot's all-in-one CRM platform. Pricing, features, pros, cons, and how it stacks up against competitors.
+      </p>
+
+      <!-- Data panel — the structural core of every review page -->
+      <div class="data-panel">
+        <div class="data-cell">
+          <div class="label">Rating</div>
+          <div class="value accent">4.4 <span style="font-size:0.8rem;font-weight:400;">/5</span></div>
+        </div>
+        <div class="data-cell">
+          <div class="label">G2 Score</div>
+          <div class="value">4.3</div>
+        </div>
+        <div class="data-cell">
+          <div class="label">Starting Price</div>
+          <div class="value">$45<span style="font-size:0.75rem;font-weight:400;">/mo</span></div>
+        </div>
+        <div class="data-cell">
+          <div class="label">Free Plan</div>
+          <div class="value good">Yes</div>
+        </div>
+      </div>
+
+      <div class="prose-sample">
+        <h2>Overview</h2>
+        <p>
+          HubSpot has evolved from a marketing automation tool into a full CRM platform
+          covering sales, marketing, customer service, and operations. Its <strong>freemium
+          model</strong> is one of the most generous in the industry — the free tier includes
+          contact management, deal tracking, email marketing, and live chat.
+        </p>
+
+        <h2>Pros &amp; Cons</h2>
+        <h3>What it does well</h3>
+        <ul>
+          <li>Comprehensive free tier — genuinely usable, not a teaser</li>
+          <li>Excellent integration ecosystem (500+ apps)</li>
+          <li>User-friendly interface with minimal training required</li>
+        </ul>
+        <h3>Where it falls short</h3>
+        <ul>
+          <li>Can get expensive quickly with add-ons and higher tiers</li>
+          <li>Limited customization options on lower plans</li>
+        </ul>
+
+        <h2>Who It's For</h2>
+        <p>
+          HubSpot is <strong>best for small to mid-size businesses</strong> that want an
+          all-in-one platform without stitching together multiple tools. Enterprise teams
+          may find <a href="#">Salesforce</a> more customizable, while startups on a tight
+          budget should consider <a href="#">Pipedrive</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mockup 3: Comparison Table -->
+  <div class="mockup">
+    <div class="mockup-header">
+      <div class="mockup-header-row">
+        <div class="mockup-breadcrumb">Home / Project Management / Comparison</div>
+        <div style="font-size:0.78rem;color:var(--color-text-muted);">Comparison view</div>
+      </div>
+    </div>
+    <div class="mockup-body">
+      <div class="detail-label">Comparison &middot; 3 products</div>
+      <h2 style="font-family:var(--font-display);font-size:1.3rem;font-weight:600;margin-bottom:var(--space-lg);">
+        Project Management Tools Compared
+      </h2>
+
+      <div style="overflow-x:auto;">
+        <table class="comp-table">
+          <thead>
+            <tr>
+              <th style="width:20%;">Feature</th>
+              <th style="width:26%;">Asana</th>
+              <th style="width:27%;">Monday.com</th>
+              <th style="width:27%;">Trello</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Rating</td>
+              <td><span class="rating-stars">★★★★★</span> <span class="highlight">4.5</span></td>
+              <td><span class="rating-stars">★★★★</span> 4.4</td>
+              <td><span class="rating-stars">★★★★</span> 4.1</td>
+            </tr>
+            <tr>
+              <td>Starting Price</td>
+              <td><span class="highlight">$10.99/mo</span></td>
+              <td>$8/mo</td>
+              <td>$5/mo</td>
+            </tr>
+            <tr>
+              <td>Free Plan</td>
+              <td><span class="check">✓</span> Yes</td>
+              <td><span class="check">✓</span> Yes</td>
+              <td><span class="check">✓</span> Yes</td>
+            </tr>
+            <tr>
+              <td>Free Trial</td>
+              <td>30 days</td>
+              <td>14 days</td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <td>Best For</td>
+              <td>Cross-functional teams</td>
+              <td>Teams of all sizes</td>
+              <td>Small teams &amp; personal</td>
+            </tr>
+            <tr>
+              <td>Key Views</td>
+              <td>List, Board, Timeline, Calendar</td>
+              <td>Board, Timeline, Gantt</td>
+              <td>Kanban boards</td>
+            </tr>
+            <tr>
+              <td>G2 Rating</td>
+              <td><span class="highlight">4.3</span></td>
+              <td>4.3</td>
+              <td>4.1</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ========== FOOTER ========== -->
+<section class="preview-section" style="border-top:1px solid var(--color-border);">
+  <div style="text-align:center;font-size:0.82rem;color:var(--color-text-muted);">
+    <p>Design System Preview &middot; Software Reviews &amp; Comparisons</p>
+    <p style="margin-top:var(--space-xs);font-size:0.75rem;">
+      Instrument Sans + Geist &middot; Slate + Sky palette &middot; No decorative elements
+    </p>
+  </div>
+</section>
+
+<script>
+function toggleTheme() {
+  const html = document.documentElement;
+  const current = html.getAttribute('data-theme');
+  html.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
+}
+try { if (window.matchMedia('(prefers-color-scheme: dark)').matches) document.documentElement.setAttribute('data-theme', 'dark'); } catch(e) {}
+</script>
+</body>
+</html>

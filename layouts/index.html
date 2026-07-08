@@ -1,0 +1,73 @@
+{{ define "main" }}
+<div class="home-page">
+  <section class="hero">
+    <h1>Which software are you looking for?</h1>
+    <div class="hero-search">
+      <input type="text" id="hero-search-input" placeholder="Search software reviews..." aria-label="Search" autocomplete="off" />
+    </div>
+  </section>
+
+  
+  {{- $softTypes := site.Taxonomies.software_types }}
+  {{- if $softTypes }}
+    <section class="featured-categories">
+      <h2>Browse by Software Category</h2>
+      <div class="category-grid">
+        {{- range $softTypes.ByCount }}
+          <a href="{{ .Page.RelPermalink }}" class="category-card">
+            <h3>{{ .Page.Title }}</h3>
+            <span class="count">{{ .Count }} reviews</span>
+          </a>
+        {{- end }}
+      </div>
+    </section>
+  {{- end }}
+
+  
+  <section class="latest-posts">
+    <h2>Latest Reviews & Comparisons</h2>
+    {{ partial "ad-incontent.html" (dict "slot" "HOME_INCONTENT") }}
+    <div class="posts-grid">
+      {{- range first 12 (where site.RegularPages "Section" "posts") }}
+        <article class="post-card">
+          <h3 class="post-card-title">
+            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+          </h3>
+          <p class="post-card-summary">
+            {{ .Description | default .Summary | plainify | truncate 140 }}
+          </p>
+          <div class="post-card-meta">
+            <span>{{ .PublishDate.Format "Jan 2, 2006" }}</span>
+            {{- $swType := .Params.software_types | default .Params.software_type }}
+            {{- with $swType }}
+              {{- if reflect.IsSlice . }}
+                {{- range first 1 . }}<span class="software-type">{{ . }}</span>{{ end }}
+              {{- else }}
+                <span class="software-type">{{ . }}</span>
+              {{- end }}
+            {{- end }}
+            {{- with .Params.rating }}
+              <span class="rating">{{ . }}/5</span>
+            {{- end }}
+          </div>
+        </article>
+      {{- end }}
+    </div>
+  </section>
+
+  
+  {{- $industries := site.Taxonomies.industries }}
+  {{- if $industries }}
+    <section class="industries-section">
+      <h2>By Industry</h2>
+      <div class="industry-list">
+        {{- range $industries.ByCount }}
+          <a href="{{ .Page.RelPermalink }}" class="industry-tag">{{ .Page.Title }} ({{ .Count }})</a>
+        {{- end }}
+      </div>
+    </section>
+  {{- end }}
+
+
+</div>
+{{ end }}

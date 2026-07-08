@@ -1,0 +1,22 @@
+# Cloudflare Pages _headers
+# Security headers
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+
+# Cache static assets
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+  Access-Control-Allow-Origin: *
+
+/images/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Cache HTML but shorter duration
+/*.html
+  Cache-Control: public, max-age=3600, s-maxage=86400
+
+# RSS feed
+/*.xml
+  Cache-Control: public, max-age=3600

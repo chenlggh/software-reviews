@@ -1,0 +1,12 @@
+{{- /* AdSense integration */ -}}
+{{- if and site.Params.adsense.enabled site.Params.adsense.publisher_id }}
+  {{- if eq site.Params.env "production" }}
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ site.Params.adsense.publisher_id }}"
+      crossorigin="anonymous"></script>
+    {{- if site.Params.adsense.auto_ads }}
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    {{- end }}
+  {{- end }}
+{{- end }}

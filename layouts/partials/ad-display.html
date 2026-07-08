@@ -1,0 +1,19 @@
+{{- /* Ad placement: display ad (728x90 leaderboard) */ -}}
+{{- if and site.Params.adsense.enabled site.Params.adsense.publisher_id (eq site.Params.env "production") -}}
+  <div class="ad-unit ad-leaderboard">
+    <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="{{ site.Params.adsense.publisher_id }}"
+      data-ad-slot="{{ .slot | default "XXXXXXXXX" }}"
+      data-ad-format="horizontal"
+      data-full-width-responsive="true">
+    </ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+{{- else if ne site.Params.env "production" -}}
+  {{- /* Placeholder in dev */ -}}
+  <div class="ad-placeholder ad-leaderboard">
+    <span>Advertisement</span>
+    <small>728×90</small>
+  </div>
+{{- end }}

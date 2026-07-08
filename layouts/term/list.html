@@ -1,0 +1,69 @@
+{{ define "main" }}
+<div class="list-page">
+  <header class="list-header">
+    {{- partial "breadcrumb.html" . }}
+    <div class="term-header">
+      <h1 class="list-title">{{ .Title }}</h1>
+      {{- $count := len .Pages }}
+      <span class="term-count">{{ $count }} review{{ if ne $count 1 }}s{{ end }}</span>
+    </div>
+    {{- with .Description }}
+      <p class="list-description">{{ . | markdownify }}</p>
+    {{- else }}
+      <p class="list-description">We've reviewed all the top {{ .Title | lower }} tools. Compare ratings, features, and pricing to find the right fit for your team.</p>
+    {{- end }}
+    <div class="list-search">
+      <input type="text" class="list-search-input" placeholder="Search within {{ .Title | lower }}..." aria-label="Search within this category" />
+    </div>
+  </header>
+
+  {{ partial "ad-display.html" (dict "slot" "LIST_TOP") }}
+
+  <div class="list-content">
+    {{- if .Content }}
+      <div class="list-body">{{ .Content }}</div>
+    {{- end }}
+
+    {{- if .Pages }}
+      <div class="posts-grid">
+        {{- range .Pages }}
+          <article class="post-card">
+            <h2 class="post-card-title">
+              <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+            </h2>
+            {{- with .Params.quick_summary }}
+              <p class="post-card-summary">{{ . | plainify | truncate 160 }}</p>
+            {{- else }}
+              <p class="post-card-summary">{{ .Description | default .Summary | plainify | truncate 160 }}</p>
+            {{- end }}
+            <div class="post-card-meta">
+              <span>{{ .PublishDate.Format "Jan 2, 2006" }}</span>
+              {{- with .Params.rating }}
+                <span class="rating">{{ . }}/5</span>
+              {{- end }}
+            </div>
+          </article>
+        {{- end }}
+      </div>
+
+      {{- if gt .Paginator.TotalPages 1 }}
+        <nav class="pagination">
+          {{- if .Paginator.HasPrev }}
+            <a href="{{ .Paginator.Prev.URL }}" class="page-prev">← Previous</a>
+          {{- end }}
+          <span class="page-info">Page {{ .Paginator.PageNumber }} of {{ .Paginator.TotalPages }}</span>
+          {{- if .Paginator.HasNext }}
+            <a href="{{ .Paginator.Next.URL }}" class="page-next">Next →</a>
+          {{- end }}
+        </nav>
+      {{- end }}
+    {{- else }}
+      <p class="text-muted" style="padding: 2rem 0; color: var(--color-text-muted);">
+        No reviews in this category yet.
+      </p>
+    {{- end }}
+  </div>
+
+  {{ partial "ad-display.html" (dict "slot" "LIST_BOTTOM") }}
+</div>
+{{ end }}

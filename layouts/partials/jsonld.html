@@ -1,0 +1,43 @@
+{{- /* JSON-LD Structured Data */ -}}
+{{- $schema := dict "@context" "https://schema.org" -}}
+
+{{- if .IsHome -}}
+  {{- $schema = merge $schema (dict
+    "@type" "WebSite"
+    "name" site.Title
+    "description" site.Params.description
+    "url" site.BaseURL
+  ) -}}
+{{- else if eq .Kind "page" -}}
+  {{- $schema = merge $schema (dict
+    "@type" "Article"
+    "headline" .Title
+    "description" .Description
+    "datePublished" (.PublishDate.Format "2006-01-02T15:04:05Z")
+    "dateModified" (.Lastmod.Format "2006-01-02T15:04:05Z")
+    "author" (dict "@type" "Organization" "name" "LuoYun Insights")
+    "publisher" (dict "@type" "Organization" "name" "LuoYun Insights")
+    "mainEntityOfPage" (dict "@type" "WebPage" "@id" .Permalink)
+    "wordCount" .WordCount
+  ) -}}
+  {{- $swType := .Params.software_types | default .Params.software_type -}}
+  {{- if $swType -}}
+    {{- $itemList := slice -}}
+    {{- range .Params.software_list -}}
+      {{- $itemList = $itemList | append (dict "@type" "Product" "name" .name "description" .description "offers" (dict "@type" "Offer" "price" .price "priceCurrency" "USD")) -}}
+    {{- end -}}
+    {{- if $itemList -}}
+      {{- $schema = merge $schema (dict "mentions" $itemList) -}}
+    {{- end -}}
+  {{- end -}}
+{{- else if eq .Kind "section" -}}
+  {{- $schema = merge $schema (dict
+    "@type" "CollectionPage"
+    "name" .Title
+    "description" .Description
+  ) -}}
+{{- end -}}
+
+<script type="application/ld+json">
+{{ $schema | jsonify | safeJS }}
+</script>

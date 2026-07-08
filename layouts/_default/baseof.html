@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="{{ site.Language }}" dir="{{ site.Language.LanguageDirection | default "ltr" }}">
+<head>
+  {{- partial "head.html" . }}
+  {{- partial "adsense.html" . }}
+</head>
+<body class="{{ if .IsHome }}home{{ end }}{{ if eq .Kind "page" }} single-page{{ end }}">
+  <a href="#main" class="skip-link">Skip to content</a>
+  {{- partial "header.html" . -}}
+  <main id="main" class="main" role="main">
+    {{- block "main" . }}{{ end -}}
+  </main>
+  {{- partial "footer.html" . -}}
+</body>
+</html>

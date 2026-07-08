@@ -1,0 +1,29 @@
+[[main]]
+  identifier = "home"
+  name = "Home"
+  url = "/"
+  weight = 10
+
+[[main]]
+  identifier = "software-types"
+  name = "Software Types"
+  url = "/software_types/"
+  weight = 20
+
+[[main]]
+  identifier = "industries"
+  name = "Industries"
+  url = "/industries/"
+  weight = 30
+
+[[main]]
+  identifier = "blog"
+  name = "Blog"
+  url = "/posts/"
+  weight = 40
+
+[[main]]
+  identifier = "about"
+  name = "About"
+  url = "/about/"
+  weight = 50

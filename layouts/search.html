@@ -1,0 +1,127 @@
+{{ define "main" }}
+<div class="search-page">
+  <header class="page-header">
+    <h1>Search</h1>
+  </header>
+  <div class="search-form">
+    <input type="text" id="search-input" placeholder="Search software reviews..." aria-label="Search" autofocus autocomplete="off" />
+  </div>
+  <div id="search-default" class="search-default">
+    <p>Type to search across all reviews and comparisons.</p>
+  </div>
+  <div id="search-loading" class="search-loading" style="display:none;">
+    <p>Loading search index...</p>
+  </div>
+  <div id="search-results" class="posts-grid" style="display:none;"></div>
+  <div id="search-empty" class="search-empty" style="display:none;">
+    <p>No reviews match your search.</p>
+    <small>Try a different keyword or browse categories above.</small>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0/dist/fuse.min.js"></script>
+<script>
+(function() {
+  var input = document.getElementById('search-input');
+  var results = document.getElementById('search-results');
+  var defaultMsg = document.getElementById('search-default');
+  var loadingMsg = document.getElementById('search-loading');
+  var emptyMsg = document.getElementById('search-empty');
+  var index = null;
+  var fuse = null;
+
+  function show(el) { if (el) el.style.display = ''; }
+  function hide(el) { if (el) el.style.display = 'none'; }
+
+  function setState(state) {
+    hide(defaultMsg);
+    hide(loadingMsg);
+    hide(results);
+    hide(emptyMsg);
+    if (state === 'initial') { show(defaultMsg); return; }
+    if (state === 'loading') { show(loadingMsg); return; }
+    if (state === 'results') { show(results); return; }
+    if (state === 'empty') { show(emptyMsg); return; }
+  }
+
+  function render(items) {
+    results.innerHTML = '';
+    items.forEach(function(item) {
+      var card = document.createElement('article');
+      card.className = 'post-card';
+      card.innerHTML =
+        '<h3 class="post-card-title"><a href="' + item.link + '">' + item.title + '</a></h3>' +
+        (item.description ? '<p class="post-card-summary">' + item.description + '</p>' : '') +
+        '<div class="post-card-meta">' +
+          (item.date ? '<span>' + item.date + '</span>' : '') +
+          (item.rating ? '<span class="rating">' + item.rating + '/5</span>' : '') +
+        '</div>';
+      results.appendChild(card);
+    });
+    setState('results');
+  }
+
+  function doSearch(query) {
+    if (!query.trim()) { setState('initial'); return; }
+    var resultsData;
+    if (fuse) {
+      resultsData = fuse.search(query);
+    } else if (index) {
+      var lower = query.toLowerCase();
+      resultsData = index.filter(function(p) {
+        return (p.title && p.title.toLowerCase().indexOf(lower) !== -1) ||
+               (p.description && p.description.toLowerCase().indexOf(lower) !== -1) ||
+               (p.content && p.content.toLowerCase().indexOf(lower) !== -1);
+      });
+    } else {
+      setState('empty');
+      return;
+    }
+
+    var items = resultsData.slice(0, 20);
+    if (typeof items[0] !== 'object' || !items[0].item) {
+      // raw mode (fuse results already have .item)
+    } else {
+      items = items.map(function(r) { return r.item; });
+    }
+
+    if (items.length === 0) { setState('empty'); return; }
+    render(items);
+  }
+
+  function loadIndex() {
+    setState('loading');
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', '{{ "/index.json" | relURL }}');
+    xhr.onload = function() {
+      if (xhr.status !== 200) {
+        setState('initial');
+        return;
+      }
+      try {
+        index = JSON.parse(xhr.responseText);
+        fuse = new Fuse(index, {
+          keys: ['title', 'description', 'content', 'tags'],
+          threshold: 0.4,
+          includeScore: true,
+        });
+        setState('initial');
+        if (input.value.trim()) doSearch(input.value);
+      } catch(e) {
+        setState('initial');
+      }
+    };
+    xhr.onerror = function() {
+      setState('initial');
+    };
+    xhr.send();
+  }
+
+  input.addEventListener('input', function() {
+    doSearch(input.value);
+  });
+
+  loadIndex();
+})();
+</script>
+{{ end }}
