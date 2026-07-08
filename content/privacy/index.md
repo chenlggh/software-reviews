@@ -1,6 +1,8 @@
 ---
 title: "Privacy Policy"
 description: "How we collect, use, and protect your data."
+date: 2026-07-08
+lastmod: 2026-07-08
 ---
 
 ## Information We Collect
@@ -28,4 +30,4 @@ Some links on this site are affiliate links. If you click through and make a pur
 
 ## Contact
 
-For privacy-related inquiries: **privacy@example.com**
+For privacy-related inquiries: **[2490625653@qq.com](mailto:2490625653@qq.com)**

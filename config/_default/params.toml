@@ -1,9 +1,9 @@
 # Theme: PaperMod parameters
 env = "production"
-title = "Software Reviews & Comparisons"
+title = "LuoYun Insights — Data-Driven Software Reviews"
 description = "Expert software comparisons, reviews, and buying guides for businesses"
 keywords = ["software reviews", "software comparison", "SaaS", "business tools"]
-author = "Software Review Team"
+author = "LuoYun Insights Team"
 
 # Date format
 DateFormat = "January 2, 2006"

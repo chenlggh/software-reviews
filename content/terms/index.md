@@ -1,6 +1,8 @@
 ---
 title: "Terms of Service"
 description: "Terms and conditions for using our website."
+date: 2026-07-08
+lastmod: 2026-07-08
 ---
 
 ## Acceptance of Terms
