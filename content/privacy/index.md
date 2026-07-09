@@ -24,9 +24,9 @@ We use cookies for:
 - **Google AdSense** — displays personalized ads based on your browsing history
 - **Google Analytics** — helps us understand how visitors use our site
 
-## Affiliate Disclosure
+## Third-Party Links
 
-Some links on this site are affiliate links. If you click through and make a purchase, we may earn a commission at no additional cost to you.
+This site may contain links to third-party websites. We are not responsible for the content or practices of these sites.
 
 ## Contact
 

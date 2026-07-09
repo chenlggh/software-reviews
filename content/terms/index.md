@@ -13,9 +13,9 @@ By using this website, you agree to these terms of service. If you do not agree,
 
 All content on this site is for informational purposes only. We make no guarantees about accuracy or completeness.
 
-## Affiliate Links
+## Third-Party Links
 
-Our site contains affiliate links. We may earn commissions from qualifying purchases made through these links.
+Our site may contain links to third-party products and services. These are provided for your convenience only.
 
 ## Limitation of Liability
 

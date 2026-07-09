@@ -30,7 +30,7 @@ Every review on LuoYun Insights follows a consistent methodology:
 
 ## Editorial Policy
 
-Our reviews are independent and unbiased. We may earn commissions through affiliate links — when you click a product link and make a purchase — but this never influences our recommendations or rankings. If we don't like a product, we say so.
+Our reviews are independent and unbiased. We thoroughly research and test each product before making recommendations. If we don't like a product, we say so.
 
 ## Contact
 
