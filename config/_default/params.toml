@@ -51,7 +51,3 @@ DateFormat = "January 2, 2006"
 # Comments (placeholder for future)
 [comments]
   enable = false
-
-# Affiliate disclosure
-[legal]
-  affiliateDisclaimer = "When you purchase through links on our site, we may earn an affiliate commission."
