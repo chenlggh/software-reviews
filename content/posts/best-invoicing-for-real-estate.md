@@ -24,8 +24,6 @@ software_list:
     description: "Free accounting software for small businesses"
 ---
 
-<p class="affiliate-note">We may earn a commission when you purchase through our links, at no extra cost to you. Our opinions remain independent.</p>
-
 > **Quick Summary:** We tested **3** leading Invoicing Software tools and found **FreshBooks** to be the best choice for most Real Estate professionals. Freelancers and solo service providers who need professional invoicing without accounting complexity
 
 **Why you can trust us:** Our team has decades of combined experience evaluating business software. We test each tool hands-on, analyze verified user reviews from G2 and Capterra, check pricing against feature sets, and update our comparisons quarterly as products evolve. We do not accept payment for positive reviews — our rankings are independent.

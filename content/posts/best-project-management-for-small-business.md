@@ -32,8 +32,6 @@ software_list:
     description: "Simple Kanban boards"
 ---
 
-<p class="affiliate-note">We may earn a commission when you purchase through our links, at no extra cost to you. Our opinions remain independent.</p>
-
 > **Quick Summary:** We tested **5** leading Project Management tools and found **Asana** to be the best choice for most Small Business professionals. Cross-functional teams that need timeline views and task dependency management
 
 **Why you can trust us:** Our team has decades of combined experience evaluating business software. We test each tool hands-on, analyze verified user reviews from G2 and Capterra, check pricing against feature sets, and update our comparisons quarterly as products evolve. We do not accept payment for positive reviews — our rankings are independent.

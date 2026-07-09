@@ -20,8 +20,6 @@ software_list:
     description: "All-in-one CRM with marketing and sales hub"
 ---
 
-<p class="affiliate-note">We may earn a commission when you purchase through our links, at no extra cost to you. Our opinions remain independent.</p>
-
 > **Quick Summary:** We tested **2** leading Email Marketing tools and found **Mailchimp** to be the best choice for most Education professionals. Small businesses building their first email list who want a free tier to start without commitment
 
 **Why you can trust us:** Our team has decades of combined experience evaluating business software. We test each tool hands-on, analyze verified user reviews from G2 and Capterra, check pricing against feature sets, and update our comparisons quarterly as products evolve. We do not accept payment for positive reviews — our rankings are independent.

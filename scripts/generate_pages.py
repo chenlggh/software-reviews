@@ -787,8 +787,6 @@ software_list:
 $software_list_yaml
 ---
 
-$affiliate_disclosure
-
 $quick_summary
 
 $trust_section
@@ -1005,13 +1003,6 @@ def generate_list_pages(data, output_dir, year=None, limit=None, all_products=No
         # --- FAQ schema (JSON-LD) ---
         faq_schema = build_faq_schema(software_type_label, industry_label, top_pick_name, software_list)
 
-        affiliate_disclosure = (
-            '<p class="affiliate-note">'
-            'We may earn a commission when you purchase through our links, at no extra cost to you. '
-            'Our opinions remain independent.'
-            '</p>'
-        )
-
         now = datetime.now()
         content = LIST_PAGE_TEMPLATE.substitute(
             title=title,
@@ -1028,7 +1019,6 @@ def generate_list_pages(data, output_dir, year=None, limit=None, all_products=No
             top_rating=top_pick.get('rating', '4.0'),
             tags_yaml=", ".join(tags),
             software_list_yaml=software_list_yaml,
-            affiliate_disclosure=affiliate_disclosure,
             quick_summary=quick_summary,
             trust_section=trust_section,
             comparison_table_html=comparison_table_html,
