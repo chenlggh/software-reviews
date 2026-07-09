@@ -1,35 +1,70 @@
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} | {{ site.Title }}{{ end }}</title>
-  <link rel="canonical" href="{{ .Permalink }}">
-  <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Summary | plainify | truncate 160 }}{{ end }}">
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo">
+      <a href="{{ "" | relURL }}">
+        <span class="logo-text">LuoYun Insights</span>
+      </a>
+    </div>
 
-  {{- if site.Params.robotsNoIndex }}
-    <meta name="robots" content="noindex">
-  {{- end }}
+    <nav class="main-nav" role="navigation" aria-label="Main menu">
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+      <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
 
-  <link rel="icon" href="{{ "favicon.ico" | relURL }}">
-  <link rel="apple-touch-icon" href="{{ "apple-touch-icon.png" | relURL }}">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+      <ul class="nav-menu">
+        {{- $currentPage := . }}
+        {{- range site.Menus.main }}
+          {{- $isActive := or (eq $currentPage.RelPermalink .URL) ($currentPage.IsMenuCurrent "main" .) }}
+          <li class="{{ if $isActive }}active{{ end }}">
+            <a href="{{ .URL | relURL }}">{{ .Name }}</a>
+          </li>
+        {{- end }}
+      </ul>
+    </nav>
 
-  {{ $css := resources.Get "css/main.css" | minify | fingerprint }}
-  <link rel="stylesheet" href="{{ $css.RelPermalink }}" crossorigin="anonymous">
+    <div class="header-cta">
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
+        <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="5" />
+          <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+        </svg>
+        <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+        </svg>
+      </button>
+      <a href="{{ "search" | relURL }}" class="search-toggle" aria-label="Search">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8" />
+          <path d="m21 21-4.35-4.35" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</header>
 
-  {{ if site.Params.adsense }}
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ site.Params.adsense }}" crossorigin="anonymous"></script>
-  {{ end }}
+<script>
+(function() {
+  var theme = localStorage.getItem('theme');
+  if (!theme) { theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+  document.documentElement.setAttribute('data-theme', theme);
+  updateIcons(theme);
+})();
+function updateIcons(theme) {
+  var sun = document.querySelector('.icon-sun');
+  var moon = document.querySelector('.icon-moon');
+  if (!sun || !moon) return;
+  if (theme === 'dark') { sun.style.display = 'none'; moon.style.display = 'block'; }
+  else { sun.style.display = 'block'; moon.style.display = 'none'; }
+}
+function toggleTheme() {
+  var html = document.documentElement;
+  var next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+  updateIcons(next);
+}
+</script>
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": {{ site.Title }},
-    "url": {{ site.BaseURL }}
-  }
-  </script>
-
-  {{- /* BreadcrumbList JSON-LD below is now in breadcrumb.html partial */ -}}
-</head>
