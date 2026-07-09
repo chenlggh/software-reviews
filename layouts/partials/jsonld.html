@@ -1,5 +1,6 @@
 {{- /* JSON-LD Structured Data */ -}}
 {{- $schema := dict "@context" "https://schema.org" -}}
+{{- $defaultImage := "images/default-article.svg" | absURL -}}
 
 {{- if .IsHome -}}
   {{- $schema = merge $schema (dict
@@ -13,6 +14,7 @@
     "@type" "Article"
     "headline" .Title
     "description" .Description
+    "image" (.Params.image | default $defaultImage)
     "datePublished" (.PublishDate.Format "2006-01-02T15:04:05Z")
     "dateModified" (.Lastmod.Format "2006-01-02T15:04:05Z")
     "author" (dict "@type" "Organization" "name" "LuoYun Insights")
@@ -24,7 +26,8 @@
   {{- if $swType -}}
     {{- $itemList := slice -}}
     {{- range .Params.software_list -}}
-      {{- $itemList = $itemList | append (dict "@type" "Product" "name" .name "description" .description "offers" (dict "@type" "Offer" "price" .price "priceCurrency" "USD")) -}}
+      {{- $cleanPrice := .price | replaceRE "^[^0-9]*([0-9]+(?:\\.[0-9]+)?).*$" "$1" | float | printf "%.2f" -}}
+      {{- $itemList = $itemList | append (dict "@type" "Product" "name" .name "description" .description "offers" (dict "@type" "Offer" "price" $cleanPrice "priceCurrency" "USD")) -}}
     {{- end -}}
     {{- if $itemList -}}
       {{- $schema = merge $schema (dict "mentions" $itemList) -}}

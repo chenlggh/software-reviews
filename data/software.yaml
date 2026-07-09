@@ -1,5 +1,6 @@
 # Software Database
 # Used by Hugo templates and Python generation script
+# Schema: see `schema.yaml` for validation rules
 
 categories:
   - id: crm
@@ -45,8 +46,13 @@ industries:
     name: Startups
 
 software:
+  # ==========================================================================
+  # HUBSPOT
+  # Category: CRM | Also suitable for: Email Marketing
+  # ==========================================================================
   - name: HubSpot
     category: crm
+    also_suitable_for: [email-marketing]
     price: "$45/mo"
     free_trial: "14 days"
     free_plan: true
@@ -69,8 +75,97 @@ software:
       - "Analytics dashboard"
     affiliate_url: "https://hubspot.com/"
 
+    industry_context:
+      real-estate: "Manages property leads with pipeline tracking and automated follow-up sequences for real estate agents"
+      freelancers: "Free CRM with contact management and email tracking — enough for solo practitioners managing client outreach"
+      small-business: "Combines sales pipeline, marketing email campaigns, and service ticketing in a single platform SMBs can grow into"
+      enterprise: "Sales and marketing hubs scale to enterprise teams but require paid tiers for advanced automation and custom reporting"
+      nonprofits: "Offers discounted pricing for nonprofits and a free CRM tier that covers donor contact management"
+      construction: "Tracks subcontractor leads and bid follow-ups through deal pipeline and email integration"
+      healthcare: "Secure patient outreach and referral tracking with GDPR and HIPAA-compliant data handling on enterprise plans"
+      ecommerce: "E-commerce integration with Shopify, BigCommerce for unified customer view from acquisition to retention"
+      education: "Admissions pipeline management and student communication tracking for educational institutions"
+      startups: "Free tier supports early-stage startups with contact management and email marketing without upfront cost"
+
+    pricing_tiers:
+      - tier: "Free CRM"
+        price: "$0"
+        users: "Unlimited users"
+        limits: "1M contacts, limited deal tags, no automation"
+      - tier: "Starter (Sales)"
+        price: "$20/mo"
+        users: "2 users"
+        limits: "Includes calling minutes and basic automation"
+      - tier: "Professional (Sales)"
+        price: "$100/mo"
+        users: "5 users"
+        limits: "Sequences, smart lead scoring, custom reporting"
+      - tier: "Enterprise"
+        price: "$150/mo"
+        users: "10 users"
+        limits: "Custom objects, predictive lead scoring, SSO"
+
+    data_points:
+      - metric: "App Marketplace"
+        value: "1,500+ integrations"
+      - metric: "Free tier limit"
+        value: "1,000,000 contacts"
+      - metric: "Uptime SLA"
+        value: "99.99%"
+        context: "on Enterprise plans"
+
+    key_integrations:
+      - "Gmail"
+      - "Outlook"
+      - "Slack"
+      - "Shopify"
+      - "WordPress"
+      - "Mailchimp"
+      - "Zapier"
+      - "Salesforce"
+
+    extended_pros:
+      - summary: "Comprehensive free tier"
+        detail: "The free CRM includes contact management, deal tracking, and email marketing for up to 1 million contacts — genuinely useful for building a sales process before committing budget."
+        category: "pricing"
+      - summary: "Excellent integration ecosystem"
+        detail: "With over 1,500 apps in its marketplace, HubSpot connects with most major business tools including Gmail, Slack, Shopify, and WordPress without requiring technical setup."
+        category: "ecosystem"
+      - summary: "User-friendly interface"
+        detail: "The UI is designed for non-technical users: drag-and-drop workflows, visual pipeline views, and plain-English reporting make it accessible to the whole team."
+        category: "usability"
+
+    extended_cons:
+      - summary: "Can get expensive with add-ons"
+        detail: "Sales Hub, Marketing Hub, and Service Hub are billed separately. Adding two hubs at Professional tier runs over $200/mo, and costs escalate quickly as you add users and features."
+        category: "pricing"
+      - summary: "Limited customization on lower tiers"
+        detail: "Custom fields, custom objects, and workflow automation are locked behind Professional and Enterprise tiers. Starter plans feel restrictive once you outgrow the basics."
+        category: "features"
+
+    ideal_for_scenarios:
+      - "Growing SMBs that want to centralize sales, marketing, and service on one platform"
+      - "Teams that prioritize ease of adoption over maximum customization"
+      - "Organizations that want a free CRM to start and scale into paid features"
+    not_ideal_for_scenarios:
+      - "Enterprise teams needing deep customization on a tight budget — Salesforce offers more flexibility at a similar price"
+      - "Teams that only need a simple contact list — Pipedrive or Trello would be leaner and cheaper"
+
+    review_highlights:
+      - source: "G2"
+        snippet: "The free tier is genuinely useful — we managed our pipeline for 6 months before needing to upgrade"
+        rating: 4.3
+      - source: "Capterra"
+        snippet: "Takes 2 weeks to fully adopt, but once you are in it, the workflow automation saves hours daily"
+        rating: 4.4
+
+  # ==========================================================================
+  # SALESFORCE
+  # Category: CRM | Pure CRM, no cross-category use
+  # ==========================================================================
   - name: Salesforce
     category: crm
+    also_suitable_for: []
     price: "$25/mo"
     free_trial: "30 days"
     free_plan: false
@@ -93,8 +188,97 @@ software:
       - "Custom dashboards"
     affiliate_url: "https://salesforce.com/"
 
+    industry_context:
+      real-estate: "Custom property lead forms, automated assignment rules, and territory management for large real estate firms"
+      freelancers: "Overkill for most freelancers — the admin overhead and cost rarely justify the capability for solo operators"
+      small-business: "Powerful but complex for most SMBs; the setup time and admin cost typically suit companies with dedicated sales ops teams"
+      enterprise: "The gold standard for enterprise sales operations with territory management, approval workflows, and custom object modeling"
+      construction: "Tracks complex bid-to-build pipelines with multi-stage approvals and subcontractor management for large contractors"
+      healthcare: "HIPAA-compliant configuration with patient referral tracking and provider relationship management for healthcare enterprises"
+      education: "Enrollment pipeline management and alumni relationship tracking with complex reporting requirements for universities"
+      nonprofits: "Nonprofit success pack includes grant tracking, donor management, and program measurement tools"
+      startups: "High cost and complexity for early stage; typically adopted after Series B when dedicated ops teams are in place"
+      ecommerce: "Order-to-cash pipeline with B2B commerce integration and partner relationship management for large retailers"
+
+    pricing_tiers:
+      - tier: "Starter"
+        price: "$25/mo"
+        users: "3 users"
+        limits: "Basic leads and accounts, no automation"
+      - tier: "Professional"
+        price: "$80/mo"
+        users: "1 user"
+        limits: "Pipeline management, forecasting, campaign tools"
+      - tier: "Enterprise"
+        price: "$165/mo"
+        users: "1 user"
+        limits: "Advanced analytics, AI insights, workflow automation"
+      - tier: "Unlimited"
+        price: "$330/mo"
+        users: "1 user"
+        limits: "Unlimited customization, 24/7 support, sandbox"
+
+    data_points:
+      - metric: "AppExchange apps"
+        value: "7,000+"
+      - metric: "Fortune 500 adoption"
+        value: "Over 90%"
+      - metric: "AI predictions per day"
+        value: "200 billion"
+        context: "powered by Einstein AI"
+
+    key_integrations:
+      - "Slack"
+      - "Tableau"
+      - "Jira"
+      - "SAP"
+      - "Oracle"
+      - "Marketo"
+      - "DocuSign"
+      - "Outlook"
+
+    extended_pros:
+      - summary: "Highly customizable"
+        detail: "Custom objects, fields, page layouts, and validation rules let you model any sales process. For enterprises with complex workflows, this flexibility is unmatched."
+        category: "features"
+      - summary: "Powerful automation"
+        detail: "Flow Builder automates multi-step processes: lead assignment, approval chains, task creation, and email alerts without writing code."
+        category: "features"
+      - summary: "Extensive app marketplace"
+        detail: "The AppExchange offers 7,000+ pre-built integrations and components, making it possible to extend Salesforce into practically any business function."
+        category: "ecosystem"
+
+    extended_cons:
+      - summary: "Steep learning curve"
+        detail: "New users typically need 4-8 weeks to become productive. The terminology, navigation, and admin interface have a reputation for being overwhelming at first."
+        category: "usability"
+      - summary: "Expensive at scale"
+        detail: "Professional tier at $80/user/mo adds up quickly for teams of 50+. Enterprise and Unlimited tiers reach $165-$330/user/mo, and integration costs add more."
+        category: "pricing"
+
+    ideal_for_scenarios:
+      - "Enterprise organizations with dedicated sales operations teams that need deep customization"
+      - "Companies already in the Salesforce ecosystem (Slack, Tableau) that benefit from native integration"
+      - "Sales teams that manage complex, multi-stakeholder deal cycles requiring approval workflows"
+    not_ideal_for_scenarios:
+      - "Small businesses or startups without sales ops staff — HubSpot or Pipedrive will deliver faster time-to-value"
+      - "Teams that need a simple, plug-and-play CRM — the admin overhead will frustrate rather than enable"
+
+    review_highlights:
+      - source: "G2"
+        snippet: "Incredibly powerful once configured, but budget 3 months for proper setup and training"
+        rating: 4.2
+      - source: "Capterra"
+        snippet: "You get what you pay for — the customization saved us from building custom software"
+        rating: 4.2
+
+  # ==========================================================================
+  # PIPEDRIVE
+  # Category: CRM | Pure CRM
+  # ==========================================================================
   - name: Pipedrive
     category: crm
+    also_suitable_for: []
     price: "$14.90/mo"
     free_trial: "14 days"
     free_plan: false
@@ -116,8 +300,97 @@ software:
       - "Custom pipelines"
     affiliate_url: "https://pipedrive.com/"
 
+    industry_context:
+      real-estate: "Visual deal stages map naturally to property sales cycles — from initial inquiry to closing and commission tracking"
+      freelancers: "Simple pipeline setup for freelancers tracking client projects from proposal to payment, with email sync built in"
+      small-business: "Affordable pipeline CRM for SMBs that need deal visibility without the overhead of enterprise platforms"
+      enterprise: "Lacks the territory management and advanced reporting that enterprise sales teams typically require"
+      construction: "Tracks bid-to-contract pipeline with activity reminders for follow-ups on construction project opportunities"
+      healthcare: "Patient referral pipeline management for smaller practices needing a straightforward deal tracking system"
+      ecommerce: "B2B order pipeline tracking with email integration for following up on wholesale and bulk purchase leads"
+      education: "Enrollment pipeline for admissions teams tracking prospective students through application stages"
+      startups: "Quick to set up for early-stage startups that need deal tracking without admin overhead or high cost"
+
+    pricing_tiers:
+      - tier: "Essential"
+        price: "$14.90/mo"
+        users: "1 user"
+        limits: "Custom pipelines, deal management, basic dashboards"
+      - tier: "Advanced"
+        price: "$27.90/mo"
+        users: "1 user"
+        limits: "Email sync, group emailing, workflow automation"
+      - tier: "Professional"
+        price: "$49.90/mo"
+        users: "1 user"
+        limits: "Revenue forecasting, contract management, e-signatures"
+      - tier: "Enterprise"
+        price: "$74.90/mo"
+        users: "1 user"
+        limits: "Security policies, dedicated support, implementation program"
+
+    data_points:
+      - metric: "Pipelines per account"
+        value: "Unlimited"
+        context: "on all paid plans"
+      - metric: "Email sync"
+        value: "Gmail and Outlook"
+        context: "two-way sync on Advanced and above"
+      - metric: "Mobile app rating"
+        value: "4.6"
+        context: "on iOS App Store"
+
+    key_integrations:
+      - "Gmail"
+      - "Outlook"
+      - "Google Calendar"
+      - "Slack"
+      - "Trello"
+      - "Mailchimp"
+      - "Zapier"
+      - "Zoom"
+
+    extended_pros:
+      - summary: "Intuitive pipeline view"
+        detail: "The drag-and-drop deal stages make it immediately obvious which deals need attention. No training required — salespeople understand it in minutes."
+        category: "usability"
+      - summary: "Easy to set up"
+        detail: "Import contacts from CSV or Google, connect your email, and you are tracking deals within an hour. The onboarding flow guides you through each step."
+        category: "usability"
+      - summary: "Great mobile app"
+        detail: "The iOS and Android apps mirror the desktop experience — add deals, update stages, log calls, and check activity reminders on the go."
+        category: "features"
+
+    extended_cons:
+      - summary: "Limited marketing features"
+        detail: "Email marketing, landing pages, and lead capture forms are absent natively. You will need Mailchimp or HubSpot alongside it for marketing automation."
+        category: "features"
+      - summary: "Basic reporting"
+        detail: "Dashboards show deal value and conversion rates but lack the multi-dimensional analytics (territory, product line, team performance) that enterprise tools offer."
+        category: "features"
+
+    ideal_for_scenarios:
+      - "Sales teams that want a visual, easy-to-adopt CRM without months of setup"
+      - "Small to medium businesses focused on outbound sales that need deal stage visibility"
+    not_ideal_for_scenarios:
+      - "Marketing-led teams that need integrated campaign management — HubSpot combines both in one platform"
+      - "Organizations requiring complex forecasting and territory analytics — Salesforce offers deeper reporting"
+
+    review_highlights:
+      - source: "G2"
+        snippet: "The visual pipeline is the killer feature — our sales team actually uses it without being reminded"
+        rating: 4.2
+      - source: "Capterra"
+        snippet: "Simple and effective for tracking deals, but you will need separate tools for email marketing"
+        rating: 4.2
+
+  # ==========================================================================
+  # ASANA
+  # Category: Project Management
+  # ==========================================================================
   - name: Asana
     category: project-management
+    also_suitable_for: []
     price: "$10.99/mo"
     free_trial: "30 days"
     free_plan: true
@@ -140,8 +413,97 @@ software:
       - "Goals tracking"
     affiliate_url: "https://asana.com/"
 
+    industry_context:
+      real-estate: "Manages property renovation projects, listing preparations, and client task coordination with timeline views"
+      freelancers: "Free tier supports solo freelancers tracking client projects with due dates and task lists"
+      small-business: "Portfolio view lets SMB owners track multiple departments or client projects from one dashboard"
+      enterprise: "Portfolio, goals, and workload features support enterprise program management across departments"
+      construction: "Gantt-style timeline view for construction project phases, subcontractor task assignments, and milestone tracking"
+      education: "Curriculum planning, assignment tracking, and faculty collaboration across departments and semesters"
+      ecommerce: "Product launch coordination, inventory task management, and cross-team campaign planning"
+      healthcare: "Compliance task tracking and patient care coordination projects with due dates and assignment rules"
+      nonprofits: "Grant deadline tracking, event planning tasks, and volunteer coordination across distributed teams"
+      startups: "Free plan covers early-stage task management; scales to paid plans as the team grows beyond 10 users"
+
+    pricing_tiers:
+      - tier: "Basic"
+        price: "$0"
+        users: "Up to 10"
+        limits: "Unlimited tasks, list/board/timeline/calendar views"
+      - tier: "Premium"
+        price: "$10.99/mo"
+        users: "1 user"
+        limits: "Timeline, workflow builder, admin console"
+      - tier: "Business"
+        price: "$24.99/mo"
+        users: "1 user"
+        limits: "Portfolio, goals, workload, time tracking"
+      - tier: "Enterprise"
+        price: "Custom"
+        users: "Custom"
+        limits: "SAML/SSO, data export, priority support"
+
+    data_points:
+      - metric: "Integrations"
+        value: "300+"
+        context: "including Slack, Google Drive, Jira"
+      - metric: "Workflow automation runs"
+        value: "100 million/month"
+        context: "on Business and Enterprise tiers"
+      - metric: "User adoption rate"
+        value: "90-day retention rate over 80%"
+
+    key_integrations:
+      - "Slack"
+      - "Google Drive"
+      - "Jira"
+      - "Microsoft Teams"
+      - "Zoom"
+      - "Adobe Creative Cloud"
+      - "Tableau"
+      - "Zapier"
+
+    extended_pros:
+      - summary: "Multiple project views"
+        detail: "List, board, timeline (Gantt), and calendar views let every team member work their preferred way without switching tools. The timeline view is particularly strong for dependency management."
+        category: "features"
+      - summary: "Strong automation rules"
+        detail: "Rules automate repetitive actions: assign tasks when status changes, move due dates, notify team members. The Business tier supports multi-step custom rules."
+        category: "features"
+      - summary: "Great collaboration tools"
+        detail: "In-line comments, task dependencies, project status reports, and automatic progress tracking keep cross-functional teams aligned without constant status meetings."
+        category: "usability"
+
+    extended_cons:
+      - summary: "Can feel complex for simple projects"
+        detail: "The breadth of features (portfolios, goals, workload) can overwhelm teams that just need a shared to-do list. Trello is a lighter alternative for basic task tracking."
+        category: "usability"
+      - summary: "Limited offline access"
+        detail: "The web and desktop apps require an internet connection for most operations. Mobile app has basic offline support for viewing tasks but not editing."
+        category: "features"
+
+    ideal_for_scenarios:
+      - "Cross-functional teams that need timeline views and task dependency management"
+      - "Organizations managing multiple projects simultaneously with portfolio oversight"
+    not_ideal_for_scenarios:
+      - "Simple personal or small-team task management where Trello's visual boards would be lighter and faster"
+      - "Teams that work primarily offline or have unreliable internet connectivity"
+
+    review_highlights:
+      - source: "G2"
+        snippet: "The timeline view made our product launches manageable — we catch dependency conflicts before they happen"
+        rating: 4.3
+      - source: "Capterra"
+        snippet: "Great for structured teams, but can feel heavy if you just need a shared list"
+        rating: 4.3
+
+  # ==========================================================================
+  # MONDAY.COM
+  # Category: Project Management | Also suitable for: light CRM
+  # ==========================================================================
   - name: Monday.com
     category: project-management
+    also_suitable_for: [crm]
     price: "$8/mo"
     free_trial: "14 days"
     free_plan: true
@@ -164,8 +526,102 @@ software:
       - "Dashboard reports"
     affiliate_url: "https://monday.com/"
 
+    industry_context:
+      real-estate: "Custom boards for property listings, showings, and client follow-ups with timeline and calendar views"
+      freelancers: "Visual project boards for freelancers tracking client deliverables, deadlines, and invoices in one workspace"
+      small-business: "Pre-built templates for marketing campaigns, sales pipelines, and project tracking — SMBs can start in minutes"
+      enterprise: "Enterprise plan includes advanced reporting, portfolio management, and enhanced security for large organizations"
+      construction: "Construction-specific templates for project planning, site inspections, and sub-contractor coordination with timeline views"
+      healthcare: "Patient intake process tracking and compliance task management with custom board columns for healthcare workflows"
+      education: "Curriculum planning boards, student project tracking, and faculty task management across semesters"
+      ecommerce: "Product launch timelines, inventory task boards, and campaign tracking with calendar integration"
+      nonprofits: "Event planning boards, donor outreach tracking, and volunteer coordination with visual dashboards"
+      startups: "Free tier supports up to 2 seats — enough for early-stage teams to organize sprints and track bugs"
+
+    pricing_tiers:
+      - tier: "Free"
+        price: "$0"
+        users: "2 users"
+        limits: "Unlimited boards, 200+ templates, 3 columns per board limited view"
+      - tier: "Basic"
+        price: "$9/mo"
+        users: "1 user"
+        limits: "Unlimited viewers, timeline view, calendar view"
+      - tier: "Standard"
+        price: "$12/mo"
+        users: "1 user"
+        limits: "Timeline & Gantt views, calendar, integrations, automations"
+      - tier: "Pro"
+        price: "$19/mo"
+        users: "1 user"
+        limits: "Private boards, time tracking, formula columns, dependencies"
+      - tier: "Enterprise"
+        price: "Custom"
+        users: "Custom"
+        limits: "Enterprise-scale automations, advanced reporting, tailored onboarding"
+
+    data_points:
+      - metric: "Board templates"
+        value: "200+"
+        context: "pre-built for various industries and workflows"
+      - metric: "Automation recipes"
+        value: "250+"
+        context: "pre-built automation recipes available"
+      - metric: "Integrations"
+        value: "100+"
+        context: "including Slack, Teams, Jira, Adobe"
+
+    key_integrations:
+      - "Slack"
+      - "Microsoft Teams"
+      - "Jira"
+      - "Adobe Creative Cloud"
+      - "Dropbox"
+      - "Google Drive"
+      - "Zapier"
+      - "Excel"
+
+    extended_pros:
+      - summary: "Highly visual interface"
+        detail: "Color-coded boards, progress bars, and status icons give instant project health visibility. The visual design means teams spend less time reading status reports and more time acting on them."
+        category: "usability"
+      - summary: "Customizable boards"
+        detail: "Add columns for status, person, date, timeline, file, and formula — each board adapts to its specific workflow. 200+ templates eliminate the blank-page problem."
+        category: "features"
+      - summary: "Good integrations"
+        detail: "Native integrations with Slack, Teams, Jira, Adobe, and Dropbox mean files and notifications flow between tools without manual updates."
+        category: "ecosystem"
+
+    extended_cons:
+      - summary: "Can get expensive per user"
+        detail: "Pro tier at $19/user/mo (billed annually) adds up for teams of 10+. When you need advanced features, the per-user cost exceeds comparable tools like Asana."
+        category: "pricing"
+      - summary: "Some advanced features require higher tier"
+        detail: "Timeline views, dependencies, formula columns, and private boards are locked behind Standard or Pro tiers. The free and Basic plans feel limited for serious project management."
+        category: "features"
+
+    ideal_for_scenarios:
+      - "Teams that benefit from visual, color-coded boards and quick-start templates across multiple workflows"
+      - "Organizations that want a single platform for project management, CRM, and operations"
+    not_ideal_for_scenarios:
+      - "Budget-conscious teams that need robust features without per-user costs — Asana's free tier offers more at no cost"
+      - "Enterprise teams that need advanced portfolio management — Jira or Asana Business provide deeper program-level controls"
+
+    review_highlights:
+      - source: "G2"
+        snippet: "The visual interface is addictive — we migrated from spreadsheets and never looked back"
+        rating: 4.3
+      - source: "Capterra"
+        snippet: "Great for visual project tracking, but the per-user cost climbs fast as you add the team"
+        rating: 4.3
+
+  # ==========================================================================
+  # TRELLO
+  # Category: Project Management
+  # ==========================================================================
   - name: Trello
     category: project-management
+    also_suitable_for: []
     price: "$5/mo"
     free_trial: null
     free_plan: true
@@ -187,8 +643,98 @@ software:
       - "Butler automation"
     affiliate_url: "https://trello.com/"
 
+    industry_context:
+      real-estate: "Simple boards for tracking property showings, client follow-ups, and deal stages with due dates and checklists"
+      freelancers: "Lightweight Kanban boards for freelancers managing client tasks, content calendars, and project to-do lists"
+      small-business: "Quick task management for SMB teams that need a shared board without complex setup"
+      enterprise: "Limited for enterprise — lacks portfolio management, timeline views, and enterprise-grade reporting"
+      construction: "Kanban boards for tracking subcontractor tasks, material orders, and site inspection checklists"
+      education: "Classroom activity boards, lesson planning, and student project tracking — teachers adopt it quickly"
+      ecommerce: "Product launch checklists, content calendar boards, and inventory task tracking for small e-commerce teams"
+      nonprofits: "Volunteer coordination boards and event planning task lists with free plan covering most needs"
+      startups: "Free plan is ideal for early-stage startups needing lightweight task tracking without budget commitment"
+      healthcare: "Patient intake checklists and compliance task boards for smaller practices with straightforward workflows"
+
+    pricing_tiers:
+      - tier: "Free"
+        price: "$0"
+        users: "Unlimited"
+        limits: "10 boards/workspace, 250 workspace command runs/month, 10MB/file"
+      - tier: "Standard"
+        price: "$5/mo"
+        users: "1 user"
+        limits: "Unlimited boards, 1,000 command runs/month, 250MB/file"
+      - tier: "Premium"
+        price: "$10/mo"
+        users: "1 user"
+        limits: "Timeline/calendar/map views, 10,000 command runs/month, unlimited automation"
+      - tier: "Enterprise"
+        price: "$17.50/mo"
+        users: "1 user"
+        limits: "Unlimited workspaces, organization-wide permissions, attachment integrations"
+
+    data_points:
+      - metric: "Power-Ups per board"
+        value: "200+"
+        context: "including Jira, Slack, Salesforce integrations"
+      - metric: "Free plan limit"
+        value: "10 boards"
+        context: "per workspace on the free tier"
+      - metric: "Butler automation runs"
+        value: "1,000/month"
+        context: "on Standard plan, unlimited on Premium"
+
+    key_integrations:
+      - "Slack"
+      - "Jira"
+      - "Google Drive"
+      - "Dropbox"
+      - "Salesforce"
+      - "Confluence"
+      - "Evernote"
+      - "Zapier"
+
+    extended_pros:
+      - summary: "Dead simple to use"
+        detail: "New users can create a board, add cards, and assign tasks in under 5 minutes. There is almost no learning curve — the Kanban metaphor is immediately intuitive."
+        category: "usability"
+      - summary: "Generous free plan"
+        detail: "Unlimited users, 10 boards per workspace, and Butler automation at 250 runs/month — the free tier actually works as a permanent solution for small teams."
+        category: "pricing"
+      - summary: "Excellent power-ups"
+        detail: "200+ Power-Ups add calendar views, voting, card aging, and integrations. Premium unlocks timeline, calendar, and map views for more structured project management."
+        category: "features"
+
+    extended_cons:
+      - summary: "Limited for complex projects"
+        detail: "No native Gantt chart, resource management, or portfolio view. Multi-step workflows require Butler automation rules, which have a learning curve of their own."
+        category: "features"
+      - summary: "No native timeline view on free plan"
+        detail: "The timeline (Gantt) view that competitors include in their free tiers is locked behind Trello's Premium plan at $10/user/mo."
+        category: "pricing"
+
+    ideal_for_scenarios:
+      - "Small teams that need a simple, visual task board without over-engineering their workflow"
+      - "Personal productivity and lightweight project tracking where ease of adoption matters more than advanced features"
+    not_ideal_for_scenarios:
+      - "Teams managing complex projects with dependencies and resource constraints — Asana or Monday.com offer deeper project controls"
+      - "Organizations that need portfolio-level reporting and cross-project visibility"
+
+    review_highlights:
+      - source: "G2"
+        snippet: "The simplest project tool we have used — onboarded the whole team in one afternoon"
+        rating: 4.1
+      - source: "Capterra"
+        snippet: "Perfect for simple workflows but you will hit the ceiling fast as projects get complex"
+        rating: 4.1
+
+  # ==========================================================================
+  # FRESHBOOKS
+  # Category: Invoicing | Also suitable for: Accounting
+  # ==========================================================================
   - name: FreshBooks
     category: invoicing
+    also_suitable_for: [accounting]
     price: "$17/mo"
     free_trial: "30 days"
     free_plan: false
@@ -211,8 +757,96 @@ software:
       - "Financial reports"
     affiliate_url: "https://freshbooks.com/"
 
+    industry_context:
+      freelancers: "Purpose-built for freelancers — time tracking, invoice creation, and expense logging in one clean interface"
+      small-business: "Simple invoicing for service-based SMBs with recurring billing and client retainers"
+      real-estate: "Property management invoicing and expense tracking for landlords and real estate agents"
+      ecommerce: "Invoicing for e-commerce product sales and expense tracking with PayPal and Stripe integration"
+      startups: "Invoicing for early-stage startups managing client billing and contractor payments"
+      construction: "Subcontractor invoicing, material expense tracking, and project-based time logging for contractors"
+      education: "Tutoring session billing and course material expense tracking for educational service providers"
+      nonprofits: "Donation invoicing and event expense tracking for small nonprofits"
+
+    pricing_tiers:
+      - tier: "Lite"
+        price: "$17/mo"
+        users: "1 user"
+        limits: "5 billable clients, unlimited invoices, expense tracking"
+      - tier: "Plus"
+        price: "$30/mo"
+        users: "3 users"
+        limits: "50 billable clients, recurring invoices, automated payments"
+      - tier: "Premium"
+        price: "$55/mo"
+        users: "5 users"
+        limits: "Unlimited billable clients, custom email, advanced payments"
+      - tier: "Select"
+        price: "Custom"
+        users: "Custom"
+        limits: "Custom pricing, dedicated account manager, partner discounts"
+
+    data_points:
+      - metric: "Payment processing"
+        value: "2.9% + $0.30"
+        context: "per credit card transaction"
+      - metric: "Invoice templates"
+        value: "Customizable templates"
+        context: "with automatic payment links"
+      - metric: "Mobile app rating"
+        value: "4.5"
+        context: "on iOS and Android"
+
+    key_integrations:
+      - "Stripe"
+      - "PayPal"
+      - "Shopify"
+      - "G Suite"
+      - "Slack"
+      - "QuickBooks"
+      - "Uncategorized.com"
+      - "Gusto"
+
+    extended_pros:
+      - summary: "Beautiful invoices"
+        detail: "Professional-looking invoices with automatic payment links, late payment reminders, and online payment buttons. Clients can pay with credit card or bank transfer in one click."
+        category: "usability"
+      - summary: "Easy expense tracking"
+        detail: "Snap receipts with the mobile app, categorize expenses, and auto-import from bank accounts. Receipts are matched to expenses for tax-ready bookkeeping."
+        category: "features"
+      - summary: "Good time tracking"
+        detail: "Built-in timer and timesheet entry let you log hours against projects and convert them directly into invoices. Billable and non-billable hours are tracked separately."
+        category: "features"
+
+    extended_cons:
+      - summary: "Limited accounting features"
+        detail: "Full double-entry accounting, payroll, and inventory management are absent. Growing businesses will outgrow FreshBooks and need to migrate to QuickBooks or Xero."
+        category: "features"
+      - summary: "Fewer users on basic plan"
+        detail: "The Lite plan supports only 1 user and 5 clients — too restrictive for teams or agencies with more than a handful of clients."
+        category: "pricing"
+
+    ideal_for_scenarios:
+      - "Freelancers and solo service providers who need professional invoicing without accounting complexity"
+      - "Small businesses that want time tracking integrated with invoicing for client billing"
+    not_ideal_for_scenarios:
+      - "Businesses that need inventory management or payroll — QuickBooks or Xero offer full accounting"
+      - "Agencies with more than 5 team members needing multi-user access on a budget"
+
+    review_highlights:
+      - source: "G2"
+        snippet: "Invoicing that actually makes getting paid easier — clients say the online payment link is seamless"
+        rating: 4.2
+      - source: "Capterra"
+        snippet: "Great for freelancers, but we outgrew it when we hired our first employee and needed payroll"
+        rating: 4.2
+
+  # ==========================================================================
+  # MAILCHIMP
+  # Category: Email Marketing | Also suitable for: CRM
+  # ==========================================================================
   - name: Mailchimp
     category: email-marketing
+    also_suitable_for: [crm]
     price: "$13/mo"
     free_trial: null
     free_plan: true
@@ -235,8 +869,98 @@ software:
       - "Analytics"
     affiliate_url: "https://mailchimp.com/"
 
+    industry_context:
+      small-business: "All-in-one marketing platform with email campaigns, automation, and CRM for SMB marketing teams"
+      freelancers: "Free plan covers up to 500 contacts — ideal for freelancers sending newsletters and promotional emails"
+      ecommerce: "Advanced e-commerce features: product recommendations, abandoned cart emails, and purchase-based segmentation"
+      nonprofits: "Discounted pricing for nonprofits and free plan for small donor communication lists"
+      startups: "Free tier for early-stage startups building their audience; scales to paid plans as contact lists grow"
+      education: "Email campaigns for alumni newsletters, admission communications, and event promotion"
+      real-estate: "Property listing email campaigns, open house notifications, and segmented buyer-seller communications"
+      construction: "Project newsletter updates and client communication campaigns for construction firms"
+      healthcare: "Patient newsletter communications and appointment reminder campaigns (requires compliance review)"
+      enterprise: "Advanced segmentation and multi-touch attribution for enterprise marketing teams"
+
+    pricing_tiers:
+      - tier: "Free"
+        price: "$0"
+        users: "1 user"
+        limits: "500 contacts, 1,000 sends/month, daily email cap, basic templates"
+      - tier: "Essentials"
+        price: "$13/mo"
+        users: "3 users"
+        limits: "5,000 contacts, 10,000 sends/month, 3 seats, A/B testing"
+      - tier: "Standard"
+        price: "$20/mo"
+        users: "5 users"
+        limits: "6,000 contacts, 60,000 sends/month, automation, retargeting"
+      - tier: "Premium"
+        price: "$350/mo"
+        users: "10 users"
+        limits: "50,000 contacts, advanced segmentation, phone support, custom templates"
+
+    data_points:
+      - metric: "Integration apps"
+        value: "300+"
+        context: "including Shopify, WooCommerce, Salesforce, Canva"
+      - metric: "Free plan contact limit"
+        value: "500 contacts"
+        context: "with daily send cap"
+      - metric: "AI content tools"
+        value: "Built-in"
+        context: "subject line optimizer and content generation"
+
+    key_integrations:
+      - "Shopify"
+      - "WooCommerce"
+      - "Salesforce"
+      - "Canva"
+      - "WordPress"
+      - "Facebook"
+      - "Instagram"
+      - "Google Analytics"
+
+    extended_pros:
+      - summary: "Generous free plan (500 contacts)"
+        detail: "Free tier includes email campaigns, basic templates, and audience management for up to 500 contacts — genuinely useful for testing the platform before committing."
+        category: "pricing"
+      - summary: "Beautiful email templates"
+        detail: "Pre-designed, responsive templates with drag-and-drop editing. The design library includes industry-specific layouts for newsletters, promotions, and transactional emails."
+        category: "features"
+      - summary: "Built-in CRM"
+        detail: "Contact management with lead scoring, segmentation, and activity tracking. Basic CRM functionality eliminates the need for a separate tool for simple audience management."
+        category: "features"
+
+    extended_cons:
+      - summary: "Can be expensive as list grows"
+        detail: "Pricing jumps from $20/mo to $350/mo when your contact list exceeds 50,000 contacts. The cost structure heavily penalizes list growth compared to competitors like ActiveCampaign."
+        category: "pricing"
+      - summary: "Automation limited on lower tiers"
+        detail: "Advanced automation (customer journeys, multi-step triggers) requires Standard plan at $20/mo. Free and Essentials tiers offer only basic autoresponders."
+        category: "features"
+
+    ideal_for_scenarios:
+      - "Small businesses building their first email list who want a free tier to start without commitment"
+      - "E-commerce stores that need product recommendations and abandoned cart automation out of the box"
+    not_ideal_for_scenarios:
+      - "Large contact lists (50k+) where Mailchimp's pricing becomes prohibitive — ActiveCampaign offers competitive pricing at scale"
+      - "Enterprise marketing teams needing advanced segmentation and multi-touch attribution"
+
+    review_highlights:
+      - source: "G2"
+        snippet: "The free plan is genuinely useful — we ran our newsletter for 2 years before upgrading"
+        rating: 4.1
+      - source: "Capterra"
+        snippet: "Templates look great out of the box, but pricing gets steep once your list passes 10,000 contacts"
+        rating: 4.1
+
+  # ==========================================================================
+  # QUICKBOOKS
+  # Category: Accounting | Also suitable for: Invoicing
+  # ==========================================================================
   - name: QuickBooks
     category: accounting
+    also_suitable_for: [invoicing]
     price: "$30/mo"
     free_trial: "30 days"
     free_plan: false
@@ -259,8 +983,98 @@ software:
       - "Bank reconciliation"
     affiliate_url: "https://quickbooks.intuit.com/"
 
+    industry_context:
+      small-business: "Industry-standard accounting for SMBs with bank reconciliation, invoicing, and tax preparation built in"
+      freelancers: "Comprehensive accounting for freelancers managing income, expenses, and quarterly tax payments"
+      enterprise: "Supports mid-market and enterprise with advanced reporting, multi-entity, and inventory management"
+      real-estate: "Property income and expense tracking, landlord-specific reporting, and rental property management"
+      ecommerce: "Inventory valuation, cost of goods sold tracking, and sales tax calculation for online retailers"
+      construction: "Job costing, change order management, and progress invoicing for construction contractors"
+      nonprofits: "Fund accounting, donor receipting, and grant tracking for nonprofit financial management"
+      healthcare: "Medical practice accounting with expense categorization and insurance payment tracking"
+      startups: "Comprehensive accounting for funded startups needing GAAP-compliant books for investor reporting"
+      education: "Educational institution accounting with grant management and departmental budgeting"
+
+    pricing_tiers:
+      - tier: "Simple Start"
+        price: "$30/mo"
+        users: "1 user"
+        limits: "Income & expense tracking, invoicing, receipt capture"
+      - tier: "Essentials"
+        price: "$55/mo"
+        users: "3 users"
+        limits: "Bill management, time tracking, up to 3 users"
+      - tier: "Plus"
+        price: "$85/mo"
+        users: "5 users"
+        limits: "Inventory tracking, project profitability, up to 5 users"
+      - tier: "Advanced"
+        price: "$200/mo"
+        users: "25 users"
+        limits: "Custom reporting, workflow automation, batch invoicing"
+
+    data_points:
+      - metric: "Accountants in network"
+        value: "650,000+"
+        context: "certified QuickBooks ProAdvisors available"
+      - metric: "Market share"
+        value: "80%+"
+        context: "of small business accounting software market"
+      - metric: "Bank connections"
+        value: "10,000+"
+        context: "financial institutions for automatic transaction import"
+
+    key_integrations:
+      - "PayPal"
+      - "Shopify"
+      - "Square"
+      - "Stripe"
+      - "Salesforce"
+      - "Mailchimp"
+      - "Gusto"
+      - "Expensify"
+
+    extended_pros:
+      - summary: "Comprehensive accounting features"
+        detail: "Full double-entry accounting with accounts payable/receivable, inventory, payroll, and job costing — everything a growing business needs in one platform."
+        category: "features"
+      - summary: "Good tax preparation tools"
+        detail: "Schedule C, quarterly estimated tax, and 1099 contractor tracking. The tax deduction finder and year-end reports simplify filing significantly."
+        category: "features"
+      - summary: "Large accountant network"
+        detail: "650,000+ ProAdvisors certified in QuickBooks means finding an accountant who works in your platform is easy. Most CPAs prefer working in QuickBooks."
+        category: "ecosystem"
+
+    extended_cons:
+      - summary: "Can be complex for non-accountants"
+        detail: "The terminology (general ledger, chart of accounts, reconciliation) assumes accounting knowledge. Non-accountants often make classification errors that require cleanup."
+        category: "usability"
+      - summary: "Customer support could be better"
+        detail: "Phone support wait times are frequently reported as 20-40 minutes. The knowledge base is extensive but finding specific answers quickly can be challenging."
+        category: "support"
+
+    ideal_for_scenarios:
+      - "Growing SMBs that need comprehensive accounting with payroll, inventory, and tax tools"
+      - "Businesses that work with CPAs who already use QuickBooks — most accountants prefer it"
+    not_ideal_for_scenarios:
+      - "Solopreneurs who only need simple invoicing — FreshBooks or Wave offer a lighter, cheaper alternative"
+      - "Non-accountants who find financial software intimidating — Wave's simpler UI may work better"
+
+    review_highlights:
+      - source: "G2"
+        snippet: "Powerful accounting that my CPA loves, but I had to take a course to feel comfortable using it"
+        rating: 3.9
+      - source: "Capterra"
+        snippet: "Essential for any business with an accountant, but the learning curve is real for non-finance users"
+        rating: 3.9
+
+  # ==========================================================================
+  # NOTION
+  # Category: Project Management | Knowledge management, not invoicing or CRM
+  # ==========================================================================
   - name: Notion
     category: project-management
+    also_suitable_for: []
     price: "$10/mo"
     free_trial: null
     free_plan: true
@@ -282,3 +1096,428 @@ software:
       - "Calendar view"
       - "Templates & sharing"
     affiliate_url: "https://notion.so/"
+
+    industry_context:
+      education: "Student notes, course wikis, and research databases — Notion is widely adopted in academic settings"
+      startups: "Startup wiki, product specs, and project tracking in one tool — popular among early-stage tech teams"
+      freelancers: "Client workspace, content calendar, and knowledge base for freelancers managing multiple projects"
+      small-business: "Company wiki, SOP documentation, and project database for SMBs that need a shared knowledge base"
+      enterprise: "QHub and enterprise features for company-wide knowledge management with admin controls"
+      construction: "Project documentation hub with spec sheets, compliance checklists, and meeting notes"
+      nonprofits: "Knowledge base for policies, volunteer documentation, and program management databases"
+      ecommerce: "Product documentation, content calendars, and SOP wikis for e-commerce operations"
+      real-estate: "Property documentation hub with listing databases, agent playbooks, and client onboarding wikis"
+      healthcare: "Practice documentation, compliance wikis, and staff onboarding resources for healthcare teams"
+
+    pricing_tiers:
+      - tier: "Free"
+        price: "$0"
+        users: "Unlimited"
+        limits: "Unlimited pages, 7-day page history, 5MB file upload"
+      - tier: "Plus"
+        price: "$10/mo"
+        users: "1 user"
+        limits: "Unlimited file upload, 30-day page history, custom automations"
+      - tier: "Business"
+        price: "$18/mo"
+        users: "1 user"
+        limits: "Team spaces, admin tools, 90-day page history"
+      - tier: "Enterprise"
+        price: "Custom"
+        users: "Custom"
+        limits: "SAML SSO, advanced security, unlimited history"
+
+    data_points:
+      - metric: "Page templates"
+        value: "1,000+"
+        context: "community and official templates available"
+      - metric: "Integrations"
+        value: "100+"
+        context: "including Slack, Jira, GitHub, Google Drive"
+      - metric: "Blocks used daily"
+        value: "1.5 billion+"
+        context: "by the Notion user community"
+
+    key_integrations:
+      - "Slack"
+      - "Jira"
+      - "GitHub"
+      - "Google Drive"
+      - "Figma"
+      - "Trello"
+      - "Asana"
+      - "Zapier"
+
+    extended_pros:
+      - summary: "Extremely flexible"
+        detail: "Databases, wikis, kanban boards, calendars, and documents all live in one workspace. You can build a CRM, project tracker, or knowledge base without buying separate tools."
+        category: "features"
+      - summary: "Great for documentation"
+        detail: "The editor supports rich formatting, code blocks, embeds, and database views. Teams actually enjoy writing docs in Notion — which means they actually write them."
+        category: "usability"
+      - summary: "Generous free plan"
+        detail: "Unlimited pages, unlimited blocks, and collaboration with up to 10 guests. The free tier is genuinely usable for personal projects and small teams."
+        category: "pricing"
+
+    extended_cons:
+      - summary: "No offline mode on web"
+        detail: "Desktop and mobile apps offer limited offline access. The web version requires constant internet connectivity, which can be frustrating on flights or in areas with poor coverage."
+        category: "features"
+      - summary: "Database queries can be slow at scale"
+        detail: "Rollups, formulas, and linked databases slow down noticeably when datasets exceed 5,000-10,000 entries. Performance degradation at scale is a known pain point."
+        category: "features"
+
+    ideal_for_scenarios:
+      - "Knowledge-driven teams that need a shared workspace for docs, wikis, and lightweight project tracking"
+      - "Startups and small teams that value flexibility and want one tool for multiple use cases"
+    not_ideal_for_scenarios:
+      - "Teams that need a dedicated project management tool with Gantt charts and resource management — Asana or Monday.com offer purpose-built PM features"
+      - "Organizations with strict offline requirements — Notion's limited offline access will be a bottleneck"
+
+    review_highlights:
+      - source: "G2"
+        snippet: "Notion replaced our wiki, project tracker, and documentation site — having everything in one place is transformative"
+        rating: 4.4
+      - source: "Capterra"
+        snippet: "Incredibly flexible but performance degrades when databases grow beyond a few thousand entries"
+        rating: 4.4
+
+  # ==========================================================================
+  # ZOHO CRM
+  # Category: CRM | Also suitable for: (none)
+  # ==========================================================================
+  - name: Zoho CRM
+    category: crm
+    also_suitable_for: []
+    price: "$14/mo"
+    free_trial: "15 days"
+    free_plan: true
+    rating: 4.1
+    g2_rating: 4.0
+    core_strength: "Affordable CRM with AI-powered sales assistant"
+    best_for: "Budget-conscious SMBs and startups"
+    pros:
+      - "Competitive pricing for feature set"
+      - "Built-in AI assistant (Zia)"
+      - "Omnichannel communication"
+    cons:
+      - "UI can feel cluttered"
+      - "Integration complexity"
+    features:
+      - "Lead management"
+      - "Contact management"
+      - "Email integration"
+      - "Analytics & reports"
+      - "AI assistant (Zia)"
+    affiliate_url: "https://zoho.com/crm/"
+
+    industry_context:
+      small-business: "Affordable CRM with email integration and automation for SMBs that need features without enterprise pricing"
+      freelancers: "Free tier supports solo freelancers managing client contacts and deal tracking without monthly cost"
+      startups: "Cost-effective CRM for bootstrapped startups needing lead scoring, workflow automation, and email integration"
+      real-estate: "Property lead management with omnichannel communication and automated assignment for real estate teams"
+      enterprise: "Enterprise version scales with customization options, but UI complexity increases with feature expansion"
+      ecommerce: "Customer order history tracking and omnichannel support for e-commerce customer management"
+      education: "Student inquiry tracking and enrollment pipeline management for educational institutions"
+      healthcare: "Patient communication tracking and appointment scheduling with compliance configurations"
+      nonprofits: "Donor management and outreach automation with affordable pricing for nonprofit budgets"
+      construction: "Contractor and project lead tracking with automated follow-up sequences"
+
+    pricing_tiers:
+      - tier: "Free"
+        price: "$0"
+        users: "3 users"
+        limits: "5,000 records, 1 custom module, lead/contact management"
+      - tier: "Standard"
+        price: "$14/mo"
+        users: "1 user"
+        limits: "Unlimited records, mass emails, sales forecasts"
+      - tier: "Professional"
+        price: "$23/mo"
+        users: "1 user"
+        limits: "Inventory management, salesSignals, blueprint automation"
+      - tier: "Enterprise"
+        price: "$52/mo"
+        users: "1 user"
+        limits: "Zia AI, command center, custom analytics"
+
+    data_points:
+      - metric: "AI predictions"
+        value: "Built-in Zia"
+        context: "predicts deal closure probability and suggests next actions"
+      - metric: "Free tier users"
+        value: "3 users"
+        context: "free forever for up to 3 users"
+      - metric: "Integrations"
+        value: "50+"
+        context: "with Zoho ecosystem and third-party apps"
+
+    key_integrations:
+      - "Gmail"
+      - "Outlook"
+      - "Zoho Mail"
+      - "Zapier"
+      - "Google Calendar"
+      - "Slack"
+      - "Twillio"
+      - "Mailchimp"
+
+    extended_pros:
+      - summary: "Competitive pricing for feature set"
+        detail: "Free tier for 3 users includes lead management, contact tracking, and email integration. Paid tiers undercut competitors by 30-40% while offering comparable features."
+        category: "pricing"
+      - summary: "Built-in AI assistant (Zia)"
+        detail: "Zia predicts deal closure probabilities, detects anomalies in data entry, suggests optimal follow-up times, and can auto-populate fields from email content."
+        category: "features"
+      - summary: "Omnichannel communication"
+        detail: "Email, phone, social media, and live chat all feed into a single contact timeline. Agents see the full conversation history regardless of channel."
+        category: "features"
+
+    extended_cons:
+      - summary: "UI can feel cluttered"
+        detail: "The interface packs many features into dense layouts. New users often find it overwhelming compared to the cleaner UIs of HubSpot or Pipedrive."
+        category: "usability"
+      - summary: "Integration complexity"
+        detail: "While integrations exist, setup often requires navigating Zoho's ecosystem of separate apps (Zoho Mail, Zoho Books, Zoho Desk) rather than seamless third-party connections."
+        category: "ecosystem"
+
+    ideal_for_scenarios:
+      - "Budget-conscious SMBs and startups that need CRM features without enterprise pricing"
+      - "Teams already using Zoho ecosystem products that benefit from native cross-app integration"
+    not_ideal_for_scenarios:
+      - "Teams that prioritize clean, minimalist UI over feature density — HubSpot or Pipedrive offer better UX"
+      - "Organizations that want plug-and-play third-party integrations — Salesforce's AppExchange is more mature"
+
+    review_highlights:
+      - source: "G2"
+        snippet: "Incredible value for the price — the free tier alone covers what other CRMs charge $30/mo for"
+        rating: 4.0
+      - source: "Capterra"
+        snippet: "Feature-rich but the interface takes time to learn — budget a week for proper onboarding"
+        rating: 4.0
+
+  # ==========================================================================
+  # CLICKUP
+  # Category: Project Management
+  # ==========================================================================
+  - name: ClickUp
+    category: project-management
+    also_suitable_for: []
+    price: "$5/mo"
+    free_trial: null
+    free_plan: true
+    rating: 4.4
+    g2_rating: 4.3
+    core_strength: "All-in-one productivity platform with docs, goals, and chat"
+    best_for: "Teams consolidating multiple tools"
+    pros:
+      - "Highly customizable views"
+      - "Everything in one platform"
+      - "Generous free plan"
+    cons:
+      - "Frequent UI changes"
+      - "Performance can lag"
+    features:
+      - "Task management"
+      - "Doc & wiki editing"
+      - "Goal tracking"
+      - "Time tracking & estimates"
+      - "Whiteboards"
+    affiliate_url: "https://clickup.com/"
+
+    industry_context:
+      small-business: "Replaces multiple tools (Asana, Notion, Google Docs) for SMBs wanting an all-in-one platform"
+      startups: "Popular among startups for its free tier that covers task tracking, docs, whiteboards, and goals"
+      freelancers: "Free plan gives freelancers task management, time tracking, and docs in one workspace"
+      education: "Student project management, course notes, and goal tracking for academic teams and study groups"
+      ecommerce: "Product launch task management, content calendars, and inventory tracking views"
+      enterprise: "Enterprise Grid plan offers custom fields, advanced permissions, and dedicated support"
+      real-estate: "Property listing task flows, client communication logs, and deal stage tracking in customizable views"
+      construction: "Construction project phases, material procurement checklists, and site inspection task tracking"
+      healthcare: "Compliance task management and patient care coordination with custom status views"
+      nonprofits: "Volunteer task boards, grant deadline tracking, and program goal setting in one platform"
+
+    pricing_tiers:
+      - tier: "Free Forever"
+        price: "$0"
+        users: "Unlimited"
+        limits: "Unlimited tasks, 100MB storage, 100 automations/month"
+      - tier: "Unlimited"
+        price: "$7/mo"
+        users: "1 user"
+        limits: "Unlimited storage, 1,000 automations/month, Gantt charts"
+      - tier: "Business"
+        price: "$12/mo"
+        users: "1 user"
+        limits: "Unlimited dashboards, 10,000 automations/month, goals"
+      - tier: "Enterprise"
+        price: "Custom"
+        users: "Custom"
+        limits: "White labeling, advanced permissions, dedicated success manager"
+
+    data_points:
+      - metric: "View types"
+        value: "15+"
+        context: "including List, Board, Gantt, Calendar, Mind Map, Map, and Timeline"
+      - metric: "Integrations"
+        value: "1,000+"
+        context: "with Zapier and native integrations"
+      - metric: "Free plan users"
+        value: "Unlimited"
+        context: "no user limit on free forever plan"
+
+    key_integrations:
+      - "Slack"
+      - "Google Drive"
+      - "Zoom"
+      - "GitHub"
+      - "GitLab"
+      - "Jira"
+      - "OneDrive"
+      - "Zapier"
+
+    extended_pros:
+      - summary: "Highly customizable views"
+        detail: "15+ view types (List, Board, Gantt, Mind Map, Calendar, Map, Timeline) adapt to any workflow. Custom statuses, fields, and hierarchy levels mirror your actual process."
+        category: "features"
+      - summary: "Everything in one platform"
+        detail: "Tasks, docs, whiteboards, goals, chat, and time tracking live in a single workspace. Teams can replace 3-5 separate tools with ClickUp alone."
+        category: "features"
+      - summary: "Generous free plan"
+        detail: "Unlimited users, unlimited tasks, 100MB storage, and 100 monthly automations — the free tier is more generous than any competitor's."
+        category: "pricing"
+
+    extended_cons:
+      - summary: "Frequent UI changes"
+        detail: "ClickUp releases updates every 2-4 weeks. While it shows rapid improvement, the constant UI changes frustrate users who prefer a stable, predictable interface."
+        category: "usability"
+      - summary: "Performance can lag"
+        detail: "Large workspaces (10,000+ tasks) experience slower load times. Complex automations and real-time collaboration can feel sluggish compared to leaner tools like Trello."
+        category: "features"
+
+    ideal_for_scenarios:
+      - "Teams that want to consolidate project management, docs, whiteboards, and goals into one tool"
+      - "Organizations that value customization and want to design their workflow from scratch"
+    not_ideal_for_scenarios:
+      - "Teams that prefer a stable, rarely-changing interface — ClickUp's frequent updates can be jarring"
+      - "Simple task tracking where Trello's straightforward Kanban boards require less setup"
+
+    review_highlights:
+      - source: "G2"
+        snippet: "Replaced Asana, Notion, and Google Docs for our team — having everything in one place is game changing"
+        rating: 4.3
+      - source: "Capterra"
+        snippet: "The most customizable project tool we have used but the constant UI changes take getting used to"
+        rating: 4.3
+
+  # ==========================================================================
+  # WAVE
+  # Category: Accounting | Also suitable for: Invoicing
+  # ==========================================================================
+  - name: Wave
+    category: accounting
+    also_suitable_for: [invoicing]
+    price: "$0"
+    free_trial: null
+    free_plan: true
+    rating: 4.0
+    g2_rating: 3.9
+    core_strength: "Free accounting software for small businesses"
+    best_for: "Solopreneurs and micro-businesses on a budget"
+    pros:
+      - "Completely free accounting"
+      - "Unlimited invoicing"
+      - "Good receipt capture"
+    cons:
+      - "Limited customer support"
+      - "Transaction fees on payments"
+    features:
+      - "Income & expense tracking"
+      - "Invoicing & estimates"
+      - "Receipt scanning"
+      - "Bank reconciliation"
+      - "Financial reports"
+    affiliate_url: "https://waveapps.com/"
+
+    industry_context:
+      freelancers: "Free accounting and invoicing for freelancers who need zero-cost financial tracking"
+      small-business: "Free platform covers basic accounting, invoicing, and receipt capture for micro-businesses"
+      startups: "Zero-cost accounting for bootstrapped startups until they outgrow and need payroll or inventory"
+      real-estate: "Property income and expense tracking for small landlords with unlimited invoicing"
+      ecommerce: "Basic e-commerce accounting with receipt scanning and bank reconciliation for small online sellers"
+      education: "Tutoring income tracking and expense management for educational service providers"
+      nonprofits: "Donation income tracking and expense management at zero cost for small nonprofits"
+      construction: "Subcontractor expense tracking and invoicing for independent contractors in construction"
+
+    pricing_tiers:
+      - tier: "Accounting"
+        price: "$0"
+        users: "Unlimited"
+        limits: "Unlimited income/expense tracking, bank connections, invoicing"
+      - tier: "Payments"
+        price: "2.9% + $0.30"
+        users: "Per transaction"
+        limits: "Credit card processing, next-day deposits"
+      - tier: "Payroll (Tax Service States)"
+        price: "$35/mo"
+        users: "Base + $6/employee"
+        limits: "Payroll, tax filings, benefits management"
+      - tier: "Payroll (Self-Service States)"
+        price: "$20/mo"
+        users: "Base + $6/employee"
+        limits: "Self-service payroll without automatic tax filings"
+
+    data_points:
+      - metric: "Monthly active users"
+        value: "5 million+"
+        context: "small business owners and freelancers"
+      - metric: "Bank connections"
+        value: "10,000+"
+        context: "financial institutions supported for auto-import"
+      - metric: "Pricing"
+        value: "$0"
+        context: "core accounting and invoicing are completely free"
+
+    key_integrations:
+      - "Stripe"
+      - "PayPal"
+      - "Shopify"
+      - "Etsy"
+      - "Square"
+      - "Google Sheets"
+      - "QuickBooks"
+      - "Zapier"
+
+    extended_pros:
+      - summary: "Completely free accounting"
+        detail: "Core accounting, unlimited invoicing, receipt scanning, and bank reconciliation cost $0. No hidden tiers — the basic functionality genuinely has no monthly fee."
+        category: "pricing"
+      - summary: "Unlimited invoicing"
+        detail: "Create and send unlimited invoices with professional templates. Automatic payment reminders and online payment links are included at no extra cost."
+        category: "features"
+      - summary: "Good receipt capture"
+        detail: "Mobile receipt scanning with auto-categorization. Snap receipts on the go and Wave extracts the amount, vendor, and category automatically."
+        category: "features"
+
+    extended_cons:
+      - summary: "Limited customer support"
+        detail: "Email-only support with no phone option for free accounts. Response times can stretch to 48 hours, which is frustrating when you encounter urgent accounting issues."
+        category: "support"
+      - summary: "Transaction fees on payments"
+        detail: "Wave Payments charges 2.9% + $0.30 per credit card transaction, higher than Stripe (2.7%) or Square (2.6%). The free accounting is subsidized by these payment fees."
+        category: "pricing"
+
+    ideal_for_scenarios:
+      - "Solopreneurs and freelancers who need free accounting and invoicing without monthly overhead"
+      - "Micro-businesses with simple finances that don't need payroll, inventory, or advanced reporting"
+    not_ideal_for_scenarios:
+      - "Businesses that need phone support or fast response times — QuickBooks offers 24/7 phone support"
+      - "Growing companies that need payroll, inventory management, or cost of goods sold tracking"
+
+    review_highlights:
+      - source: "G2"
+        snippet: "Free accounting that actually works for a solo business — hard to beat the price"
+        rating: 3.9
+      - source: "Capterra"
+        snippet: "Perfect for freelancers but support is slow and you pay for it in payment processing fees"
+        rating: 3.9
