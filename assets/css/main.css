@@ -1143,6 +1143,31 @@ main {
 }
 .footer-nav a:hover { color: white; }
 
+/* Dark mode footer - darker background, muted text */
+[data-theme="dark"] .site-footer {
+  background: #0f172a;
+  border-top: 1px solid #1e293b;
+}
+[data-theme="dark"] .site-footer .footer-col h4 {
+  color: #e2e8f0;
+}
+[data-theme="dark"] .site-footer .footer-col p,
+[data-theme="dark"] .site-footer .footer-col ul li a {
+  color: #64748b;
+}
+[data-theme="dark"] .site-footer .footer-bottom {
+  border-top-color: #1e293b;
+}
+[data-theme="dark"] .site-footer .footer-bottom span {
+  color: #475569;
+}
+[data-theme="dark"] .site-footer .footer-nav a {
+  color: #475569;
+}
+[data-theme="dark"] .site-footer .footer-nav a:hover {
+  color: #94a3b8;
+}
+
 /* --- List Styles --- */
 .list-page { padding: 1rem 0; }
 
