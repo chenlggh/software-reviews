@@ -1,1 +1,0 @@
-{"base_tree": "e606ae85582e757cf22aa14b8f794435537586a1", "tree": [{"path": "config/_default/params.toml", "mode": "100644", "sha": "d5cf5511"}, {"path": "layouts/partials/header.html", "mode": "100644", "sha": "0eeca94b"}, {"path": "layouts/partials/footer.html", "mode": "100644", "sha": "43e02358"}]}
